@@ -108,6 +108,5 @@ csv/
 temp/
 .vscode/
 .DS_Store
-notes.md
-notes2.md
+NOTES.md
 resources/
