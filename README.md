@@ -10,11 +10,11 @@
 - Environment variable settings
 
   - DATABASE_UK=postgres connection string
-  - MIN_CODE="0"
-  - xSPECIFIC_COUNTRY="ME"
-  - xSPECIFIC_CODE="1514111000"
-  - SAVE_TO_DB=1
-  - OVERWRITE_DB=1
+  - MIN_CODE="0" -- Replace this with a valid 10-digit commodity code to restart processing from a specific code
+  - SPECIFIC_COUNTRY="ME" -- Overrides the country list to pull data from a specific country only
+  - SPECIFIC_CODE="1514111000" -- Overrides the commodity list to pull data for a single commodity only
+  - SAVE_TO_DB=1 -- Flag to save to the database or not
+  - OVERWRITE_DB=1 -- Flag to determine if pre-existing data is to be overwritten
 
 - Install necessary Python modules via `pip3 install -r requirements.txt`
 
