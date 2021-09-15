@@ -20,6 +20,18 @@
 
 ## Usage
 
+### The countries.json configuration file
+
+- This file contains a list of all of the countries for which we are scraping data
+- Each country item is structured as follows:
+
+  `{
+      "code": "AF",
+      "prefix": "gsp",
+      "omit": 0,
+      "source": "classic"
+  }`
+
 ### To scrape source:
 
   `python3 scrape_roo.py`
