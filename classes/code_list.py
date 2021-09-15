@@ -279,8 +279,9 @@ class CodeList(object):
             object["rules"].append(rule.asdict())
             previous_rule = rule
 
-        path = "/Users/mattlavis/sites and projects/1. Online Tariff/ott prototype/app/data/roo/xi/product_specific/"
-        filename = os.path.join(path, country["prefix"] + "_roo.json")
+        load_dotenv('.env')
+        export_path = os.getenv('EXPORT_PATH')
+        filename = os.path.join(export_path, country["prefix"] + "_roo.json")
         with open(filename, 'w') as f:
             json.dump(object, f, indent=4)
         a = 1
