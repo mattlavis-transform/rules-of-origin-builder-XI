@@ -1,6 +1,5 @@
 from datetime import datetime
-import os
-import json
+import sys
 import re
 from markdownify import markdownify as md
 from classes.database import Database
@@ -22,6 +21,7 @@ class EuRoo(object):
         self.key_verbatim = key.replace(".", "")
         if "ex" in self.key_verbatim:
             self.key = self.key_verbatim.replace("ex ", "")
+            # self.key = self.key_verbatim
             self.ex = True
         else:
             self.key = self.key_verbatim
@@ -72,6 +72,8 @@ class EuRoo(object):
                         str(int(self.chapter)) + " - " + \
                         self.headings_dict[comm_code].lower().capitalize()
             a = 1
+            self.key = self.key_verbatim
+            
         elif "Chapter" in tmp:
             tmp = tmp.replace("Chapter", "")
             tmp = tmp.strip()
@@ -81,13 +83,18 @@ class EuRoo(object):
             else:
                 self.key_min = tmp
                 self.key_max = tmp
-            a = 1
+            
+            if self.ex:
+                self.key = "ex&nbsp;" + self.key
         else:
             self.key_min = self.key
             self.key_max = self.key
+            self.key = self.key_verbatim
 
         self.key_first = self.key_min + ("0" * (10 - len(self.key_min)))
         self.key_last = self.key_max + ("9" * (10 - len(self.key_max)))
+        self.key = self.key.replace("ex ", "ex&nbsp;")
+        self.key = self.key.replace("Chapter ", "Chapter&nbsp;")
 
     def parse_rule_description(self):
         self.rules[0]["description"] = self.rules[0]["description"].strip("- ")
@@ -144,6 +151,13 @@ class EuRoo(object):
             return ""
         else:
             # return s
+            s = s.replace(' xmlns="http://trade.europa.eu"', '')
+            s = s.replace(' xmlns:fn="http://www.w3.org/2005/xpath-functions"', '')
+            s = s.replace(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"', '')
+            s = s.replace('</p>\n', '</p>')
+            
+            
+            s = s.replace(" %", "%")
             s = s.replace(r'[ul]', '<ul>')
             s = s.replace(r'[\ul]', '</ul>')
             s = s.replace(r'[ol]', '<ol>')
@@ -153,11 +167,16 @@ class EuRoo(object):
             s = s.replace("<note-ref", " <note-ref")
             s = s.replace("\n                    ", " ")
             s = s.replace("\n                   ", " ")
-            s = s.replace(r'\n[ ]{5,20}', " ")
+            s = re.sub(r'\n[ ]{5,20}', '', s)
             s = s.replace(r'; or ', ";\n\nor\n\n")
             s = s.replace(r')', ") ")
             s = s.replace(r',', ", ")
             s = re.sub(r'[ \t]+', ' ', s)
+            
+            s = s.replace("<li><p>", "<li>")
+            s = s.replace("</li> </ul>", "</li></ul>")
+            
+            
             
             # Get footnotes
             regex = r'<footnote-ref[^>]+>([^<]+)<\/footnote-ref>'
@@ -167,6 +186,11 @@ class EuRoo(object):
             s = re.sub(regex, '', s)
             s = s.strip()
             s = s.rstrip(":")
+            
+            s = s.replace("\n", " ")
+            s = s.replace("  ", " ")
+            
+            # Convert the HTML into markdown
             if do_markdown:
                 s = md(s)
             s = re.sub(r'\n\n\n', '\n\n', s, re.MULTILINE)
@@ -176,15 +200,15 @@ class EuRoo(object):
                 except:
                     pass
 
+            s = s.replace("()", "")
             s = s.replace("..", "")
             s = s.replace(":*", ":\n*")
+            s = s.replace("* \n", "* ")
             s = s.replace("\n. ", "\n")
             s = s.replace("\n.", "\n")
             s = s.replace("\n", "\n\n")
             s = s.replace("\n\n\n", "\n\n")
             
-            if "3824" in self.goods_nomenclature_item_id:
-                a = 1
             s = s.replace(" :", ":")
             s = re.sub(r'[\n]{1,5}:', ':', s, re.MULTILINE)
             s = re.sub(r'[ ]+,', ',', s, re.MULTILINE)
@@ -271,6 +295,7 @@ class HeadingRange(object):
         self.key_max = None
 
     def parse_description(self):
+        self.description = self.description.replace("\n\t\t\t\t\t\t\t\t", " ")
         if "-" in self.description:
             # Matches 01.02 - 01.09, here we are looking just for a range
             # which actually covers an entire chapter
@@ -310,7 +335,12 @@ class HeadingRange(object):
                             for heading in chapter_extent:
                                 if heading >= self.key_min:
                                     if heading <= self.key_max:
-                                        tmp += heading + ": " + self.headings_dict[heading.ljust(10, "0")] + "\n\n"
+                                        try:
+                                            tmp += heading + ": " + self.headings_dict[heading.ljust(10, "0")] + "\n\n"
+                                        except:
+                                            print(heading)
+                                            sys.exit()
+                                            
                         
                             self.description = tmp
                         

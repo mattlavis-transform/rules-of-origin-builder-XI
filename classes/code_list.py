@@ -31,34 +31,35 @@ class CodeList(object):
         self.config["save_to_db"] = bool(os.getenv('SAVE_TO_DB'))
         self.config["overwrite_db"] = bool(os.getenv('OVERWRITE_DB'))
 
-        self.load_example_codes()
+        self.load_exemplar_codes()
 
         self.get_countries()
         self.url_template = "https://webgate.ec.europa.eu/roo/public/v1/rules/product/{{id}}/country/EU/partner/{{country}}?app=madb&direction=IMPORT&format=HTML&language=EN"
         self.url_template_classic = "https://webgate.ec.europa.eu/roo/public/v1/classic/chapter/{{id}}/country/{{country}}?language=EN"
 
-    def load_example_codes(self):
-        self.get_filename()
-        self.example_codes = []
+    def load_exemplar_codes(self):
+        self.get_exemplar_codes_filename()
+        self.exemplar_codes = []
         with open(self.filename) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             line_count = 0
             for row in csv_reader:
                 ex = Classification(row[0], row[1], "80", -1, 1)
-                self.example_codes.append(ex)
+                self.exemplar_codes.append(ex)
 
         if self.config["specific_code"] is not None and self.config["specific_code"] != "":
-            tmp = self.example_codes
-            self.example_codes = []
+            tmp = self.exemplar_codes
+            self.exemplar_codes = []
             for item in tmp:
                 if item.goods_nomenclature_item_id == self.config["specific_code"]:
-                    self.example_codes.append(item)
+                    self.exemplar_codes.append(item)
+        a = 1
 
-    def get_filename(self):
+    def get_exemplar_codes_filename(self):
         folder = os.getcwd()
         folder = os.path.join(folder, "resources")
         folder = os.path.join(folder, "csv")
-        filename = "example_codes.csv"
+        filename = "exemplar_codes.csv"
         self.filename = os.path.join(folder, filename)
 
     def get_countries(self):
@@ -76,11 +77,11 @@ class CodeList(object):
                 if country["code"] == self.config["specific_country"]:
                     self.countries.append(country)
 
-    def scrape_madb(self):
+    def scrape_roo(self):
         for country in self.countries:
             if country["omit"] != 1:
                 if country["source"] == "product":
-                    for ex in self.example_codes:
+                    for ex in self.exemplar_codes:
                         if ex.goods_nomenclature_item_id >= self.config["min_code"]:
                             print("Getting commodity {0} from MADB for {1} ({2})".format(
                                 ex.goods_nomenclature_item_id,
@@ -175,7 +176,7 @@ class CodeList(object):
         d = Database()
         sql = """
         select distinct on (gnd.goods_nomenclature_item_id)
-        gnd.goods_nomenclature_item_id, gnd.description
+        gnd.goods_nomenclature_item_id, coalesce(gnd.description, '') as description
         from goods_nomenclature_descriptions gnd, goods_nomenclature_description_periods gndp 
         where gnd.goods_nomenclature_sid = gndp.goods_nomenclature_sid 
         and right(gnd.goods_nomenclature_item_id, 4) = '0000'
@@ -189,7 +190,7 @@ class CodeList(object):
         a = 1
         
         
-    def process_madb(self):
+    def process_roo(self):
         self.get_heading_descriptions()
         root_path = os.getcwd()
         root_path = os.path.join(root_path, "resources", "json")
@@ -216,9 +217,12 @@ class CodeList(object):
             directory_contents = os.listdir(path2)
             self.do_timestamp()
             items = []
-            for item in directory_contents:
-                items.append(item)
-                
+            if self.config["specific_code"] != "" and self.config["specific_code"] is not None:
+                items.append(self.config["specific_code"][0:6] + ".json")
+            else:
+                for item in directory_contents:
+                    items.append(item)
+                    
             items.sort()
             for item in items:
                 item2 = os.path.join(path2, item)
@@ -249,11 +253,11 @@ class CodeList(object):
                         data_json = json.load(f)
                         classic_roo = ClassicRoo(data_json, country, subheading, self.config)
                         
-            self.export_to_json(country)
+            self.export_to_json(country, "xi")
             self.do_timestamp()
             # sys.exit()
             
-    def export_to_json(self, country):
+    def export_to_json(self, country, scope):
         d = Database()
         
         sql = """
@@ -262,11 +266,15 @@ class CodeList(object):
         from roo.rules_to_commodities rtc, roo.rules r
         where r.id_rule = rtc.id_rule 
         and r.country_prefix = %s
+        and r.scope = %s
+        and rtc.scope = %s
         order by sub_heading;
         """
         
         params = [
-            country["prefix"]
+            country["prefix"],
+            scope,
+            scope
         ]
         rows = d.run_query(sql, params)
         object = {}
@@ -359,7 +367,7 @@ class CodeList(object):
         # min_code = "6201999999"
         # min_code = "0"
         for country in countries:
-            for ex in self.example_codes:
+            for ex in self.exemplar_codes:
                 if ex.goods_nomenclature_item_id > min_code:
                     url = url_template.replace("{{country}}", country)
                     url = url.replace("{{sid}}", ex.goods_nomenclature_sid)
@@ -408,8 +416,8 @@ class CodeList(object):
                         f.close()
 
     def get_codes(self):
-        self.get_filename()
-        self.example_codes = []
+        self.get_exemplar_codes_filename()
+        self.exemplar_codes = []
         d = datetime.now()
         d2 = datetime.strftime(d, '%Y-%m-%d')
         self.unique_subheadings = []
@@ -450,14 +458,14 @@ class CodeList(object):
             for i in range(start_index, len(self.classifications) - 1):
                 c = self.classifications[i]
                 if c.goods_nomenclature_item_id[0:6] == subheading:
-                    self.example_codes.append(c)
+                    self.exemplar_codes.append(c)
                     found = True
                     a = 1
                     start_index = i + 1
                     break
 
         f = open(self.filename, "w+")
-        for ex in self.example_codes:
+        for ex in self.exemplar_codes:
             f.write(str(ex.goods_nomenclature_sid) + ",")
             f.write(ex.goods_nomenclature_item_id + "\n")
 

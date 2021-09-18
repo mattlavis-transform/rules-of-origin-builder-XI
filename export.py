@@ -20,6 +20,11 @@ japan = {
     "prefix": "japan",
     "omit": 1
 }
+singapore = {
+    "code":"SG",
+    "prefix": "singapore",
+    "omit": 0
+}
+scope = "xi"
 code_list = CodeList()
-# code_list.load_example_codes()
-code_list.export_to_json(canada)
+code_list.export_to_json(singapore, scope)

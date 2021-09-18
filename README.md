@@ -32,6 +32,17 @@
       "source": "classic"
   }`
 
+  where:
+
+  - code is the 2-digit ISO country code to that is used as an input into the scrape function
+  - prefix is the code against which the data is registered in the local database
+  - omit (0 | 1) which determines if the country is to be 'skipped' or not
+  - source indicates the following, dependent on the value:
+    - if 'classic', then the RoO are structured using the old fashioned Trade Helpdesk structures
+    - if 'product', then using the new MADB / ROSA product-specific rules (PSR)
+  - At the time of writing, GSP, Turkey and Kenya used the old style
+      
+
 ### To scrape source:
 
   `python3 scrape_roo.py`
