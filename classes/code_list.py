@@ -187,9 +187,7 @@ class CodeList(object):
         self.headings_dict = {}
         for head in self.headings:
             self.headings_dict[head[0]] = head[1]
-        a = 1
-        
-        
+
     def process_roo(self):
         self.get_heading_descriptions()
         root_path = os.getcwd()
