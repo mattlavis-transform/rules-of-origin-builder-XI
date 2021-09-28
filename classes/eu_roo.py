@@ -144,6 +144,17 @@ class EuRoo(object):
 
             self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace(" ;", ";")
             self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("; ", ";\n\n")
+            
+            if "except for" in self.rules[i]["description_string"]:
+                if "Cotton" in self.rules[i]["description_string"]:
+                    a = 1
+
+            if self.rules[i]["description_string"][-10:] == "except for":
+                self.rules[i]["description_string"] = self.rules[i]["description_string"][:-10]
+                
+            self.rules[i]["description_string"] = self.rules[i]["description_string"].strip()
+            self.rules[i]["description_string"] = self.rules[i]["description_string"].strip(";")
+                    
 
     def fmt(self, s, do_markdown=True):
         footnote = ""

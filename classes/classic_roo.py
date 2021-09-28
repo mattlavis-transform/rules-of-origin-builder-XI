@@ -39,6 +39,7 @@ class ClassicRooScheme(object):
         if self.rules is None:
             self.rules = ""
         self.rules = self.rules + ""
+        
         self.rules = re.sub(r"\n", " ", self.rules)
         self.rules = re.sub(r'<TR', "<tr", self.rules)
         self.rules = re.sub(r'<TD', "<td", self.rules)
@@ -60,6 +61,12 @@ class ClassicRooScheme(object):
         self.rules = re.sub(r'<tr><td></table>', "</table>", self.rules)
         self.rules = re.sub(r'</td></td>', "</td>", self.rules)
         self.rules = re.sub(r'<tr><td></td><td></td><td></td><td></td></tr>', "", self.rules)
+        self.rules = re.sub(r' class="Normal_Left"', "", self.rules)
+        self.rules = re.sub(r'<td><div>', "<td>", self.rules)
+        self.rules = re.sub(r'</div></td>', "</td>", self.rules)
+        self.rules = re.sub(r'\s{1,100}<a class=\"pointer\" id=\"fnB[0-9]{1,3}\" onclick=\"[^\"]+\\">\s{1,100}\[[0-9]{1,3}\]\s{1,100}</a>\s{1,100}', " ", self.rules)
+        self.rules = re.sub(r'<a class=\"pointer\" id=\"fnB[0-9]{1,3}\" onclick=\"scrollToRoo', " poopoo ", self.rules)
+        
 
         self.rules = self.rules.strip()
         
@@ -70,8 +77,7 @@ class ClassicRooScheme(object):
         # Then take out some of the unwanted replacements
         self.rules = re.sub(r'<t([dh])>\s*', r"<t\1>", self.rules)
         self.rules = re.sub(r'\s*</t([dh])>', r"</t\1>", self.rules)
-        a = 1
-    
+
     def save_rules(self):
         folder = os.getcwd()
         folder = os.path.join(folder, "resources")
@@ -79,8 +85,7 @@ class ClassicRooScheme(object):
         folder = os.path.join(folder, self.country["code"])
         if not os.path.isdir(folder):
             os.mkdir(folder)
-        file = os.path.join(
-            folder, self.sub_heading + ".html")
+        file = os.path.join(folder, self.sub_heading + ".html")
         f = open(file, "w+")
         f.write(self.rules)
         f.close()
@@ -96,6 +101,7 @@ class ClassicRooScheme(object):
             self.footnotes[f.code] = f.content
 
     def parse_key(self):
+        # Function not used
         tmp = self.key
         
         if " and " in self.key:

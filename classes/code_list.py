@@ -241,7 +241,7 @@ class CodeList(object):
                         for (k, v) in rules.items():
                             eu_roo = EuRoo(k, v, footnotes, country, subheading, self.config, self.headings_dict, self.heading_extents_dict)
                     else:
-                        print("Getting {0} from MADB for {1} ({2})".format(
+                        print("Getting classic {0} from MADB for {1} ({2})".format(
                             subheading,
                             country["code"],
                             country["prefix"]
