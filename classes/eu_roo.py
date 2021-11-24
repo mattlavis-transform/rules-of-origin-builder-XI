@@ -112,29 +112,42 @@ class EuRoo(object):
             self.rules[i]["rule_string"] = self.fmt(self.rules[i]["rule"])
             self.rules[i]["alternate_rule_string"] = self.fmt(self.rules[i]["alternateRule"])
             
+            # For Canada - CC
+            if "Change of chapter" in self.rules[i]["rule_string"]:
+                if "CC" not in self.rules[i]["rule_string"]:
+                    self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("Change of chapter", "Change of chapter - CC")
+                self.rules[i]["rule_string"] += "{{CC}}"
+                
+            # For Japan - CC
+            elif "CC" in self.rules[i]["rule_string"]:
+                self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("CC", "Change of chapter - CC")
+                self.rules[i]["rule_string"] += "{{CC}}"
+
             # For Canada - CTH
             if "A change from any other heading" in self.rules[i]["rule_string"]:
-                self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("A change from any other heading", "A change from any other heading (CTH)")
+                if "CTH" not in self.rules[i]["rule_string"]:
+                    self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("A change from any other heading", "A change from any other heading - CTH")
                 self.rules[i]["rule_string"] += "{{CTH}}"
                 
             # For Japan - CTH
             elif "CTH" in self.rules[i]["rule_string"]:
-                self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("CTH", "A change from any other heading (CTH)")
+                self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("CTH", "A change from any other heading - CTH")
                 self.rules[i]["rule_string"] += "{{CTH}}"
 
             # For Canada - CTSH
             if "A change from any other subheading" in self.rules[i]["rule_string"]:
-                self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("A change from any other subheading", "A change from any other subheading (CTSH)")
+                if "CTSH" not in self.rules[i]["rule_string"]:
+                    self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("A change from any other subheading", "A change from any other subheading - CTSH")
                 self.rules[i]["rule_string"] += "{{CTSH}}"
                 
             # For Japan - CTSH
             elif "CTSH" in self.rules[i]["rule_string"]:
-                self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("CTSH", "A change from any other subheading (CTSH)")
+                self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("CTSH", "A change from any other subheading - CTSH")
                 self.rules[i]["rule_string"] += "{{CTSH}}"
 
-            # For Japan - CTH
+            # For Japan - RVC
             if "RVC" in self.rules[i]["rule_string"]:
-                self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("RVC", "Regional Value Content (RVC)")
+                self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("RVC", "Regional Value Content - RVC")
                 
             if "wholly obtained" in self.rules[i]["rule_string"]:
                 self.rules[i]["rule_string"] += "{{WO}}"
@@ -145,10 +158,6 @@ class EuRoo(object):
             self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace(" ;", ";")
             self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("; ", ";\n\n")
             
-            if "except for" in self.rules[i]["description_string"]:
-                if "Cotton" in self.rules[i]["description_string"]:
-                    a = 1
-
             if self.rules[i]["description_string"][-10:] == "except for":
                 self.rules[i]["description_string"] = self.rules[i]["description_string"][:-10]
                 
@@ -231,7 +240,7 @@ class EuRoo(object):
     def save_to_db(self):
         for i in range(0, len(self.rules)):
             if self.rules[i]["idRule"] is not None:
-                # First save the rule itsefl, if it needs to be saved
+                # First save the rule itself, if it needs to be saved
                 d = Database()
                 sql = """
                 INSERT INTO roo.rules
@@ -245,11 +254,11 @@ class EuRoo(object):
                 ON CONFLICT (id_rule) DO UPDATE SET
                 (scope, country_code, country_prefix,
                 heading, description, rule, alternate_rule,
-                quota_amount, quota_unit, key_first, key_last)
+                quota_amount, quota_unit, key_first, key_last, date_created)
                 =
                 (EXCLUDED.scope, EXCLUDED.country_code, EXCLUDED.country_prefix,
                 EXCLUDED.heading, EXCLUDED.description, EXCLUDED.rule, EXCLUDED.alternate_rule,
-                EXCLUDED.quota_amount, EXCLUDED.quota_unit, EXCLUDED.key_first, EXCLUDED.key_last)
+                EXCLUDED.quota_amount, EXCLUDED.quota_unit, EXCLUDED.key_first, EXCLUDED.key_last, current_timestamp)
                 """
 
                 params = [
@@ -268,7 +277,7 @@ class EuRoo(object):
                 ]
                 d.run_query(sql, params)
 
-                # Then save the realtionship with the subheading
+                # Then save the relationship with the subheading
                 d = Database()
                 sql = """
                 INSERT INTO roo.rules_to_commodities
@@ -307,7 +316,11 @@ class HeadingRange(object):
 
     def parse_description(self):
         self.description = self.description.replace("\n\t\t\t\t\t\t\t\t", " ")
-        if "-" in self.description:
+
+        if self.description == "Missing description":
+            self.description = 'The List of "Product-specific Rules of Origin" does not contain a description of the product at this point.'
+            
+        elif "-" in self.description:
             # Matches 01.02 - 01.09, here we are looking just for a range
             # which actually covers an entire chapter
             # self.description = self.description.replace(" ", "")
@@ -351,12 +364,8 @@ class HeadingRange(object):
                                         except:
                                             print(heading)
                                             sys.exit()
-                                            
-                        
+
                             self.description = tmp
-                        
-                            
-                        a = 1
 
         elif len(self.description) == 5:
             # Matches 04.01 etc.

@@ -66,7 +66,7 @@ class CodeList(object):
         folder = os.getcwd()
         folder = os.path.join(folder, "resources")
         folder = os.path.join(folder, "source")
-        countries_file = os.path.join(folder, "countries.json")
+        countries_file = os.path.join(folder, "roo_countries.json")
         f = open(countries_file)
         self.countries = json.load(f)
 
@@ -209,7 +209,11 @@ class CodeList(object):
             paths = paths2
         
         paths.sort()
+        # In which the paths are the countries that are representative of the RoO schemes
         for path in paths:
+            if path == "AF":
+                self.clear_db(path)
+                
             country = self.get_country(path)
             path2 = os.path.join(root_path, path)
             directory_contents = os.listdir(path2)
@@ -222,6 +226,7 @@ class CodeList(object):
                     items.append(item)
                     
             items.sort()
+            # In which the items are the downloaded files (the headings for the new RoO types, and the chapters for the old, classic ones)
             for item in items:
                 item2 = os.path.join(path2, item)
                 subheading = item.replace(".json", "")
@@ -249,12 +254,72 @@ class CodeList(object):
 
                         f = open(item2)
                         data_json = json.load(f)
-                        classic_roo = ClassicRoo(data_json, country, subheading, self.config)
+                        if subheading != "xchapter_28":
+                            classic_roo = ClassicRoo(data_json, country, subheading, self.config)
+                        a = 1
                         
+            if country["source"] != "product":
+                a = 1
+                self.apply_classic_rules_to_commodities()
+            
             self.export_to_json(country, "xi")
             self.do_timestamp()
-            # sys.exit()
-            
+
+    def apply_classic_rules_to_commodities(self):
+        # Get the rules that have been written for GSP
+        sql = """
+        select id_rule, key_first, key_last
+        from roo.rules r where country_prefix = 'gsp'
+        order by key_first, key_last;
+        """
+        d = Database()
+        params = []
+        classic_rules = d.run_query(sql, params)
+        
+        for ex in self.exemplar_codes:
+            print("Finding rule for subheading", ex.goods_nomenclature_item_id[0:6])
+            ex1 = ex.goods_nomenclature_item_id[0:6] + "0000"
+            ex2 = ex.goods_nomenclature_item_id[0:6] + "9999"
+            for classic_rule in classic_rules:
+                if ex2 >= classic_rule[1] and ex1 < classic_rule[2]:
+                    # Then save the relationship with the subheading
+                    d = Database()
+                    sql = """
+                    INSERT INTO roo.rules_to_commodities
+                    (
+                        id_rule, scope, sub_heading, country_prefix
+                    )
+                    VALUES
+                    (%s, %s, %s, %s)
+                    ON CONFLICT DO NOTHING
+                    """
+                    
+                    params = [
+                        classic_rule[0],
+                        "xi",
+                        ex.goods_nomenclature_item_id[0:6],
+                        "gsp", 
+                    ]
+                    d.run_query(sql, params)
+                    
+                    break
+        a = 1
+    
+    def clear_db(self, path):
+        print("Clearing database of previous entries")
+        
+        # Delete the rules themselves
+        sql = """delete from roo.rules r where country_prefix = 'gsp';"""
+        d = Database()
+        params = []
+        d.run_query(sql, params)
+        
+        # Delete the rules' associations with commodities
+        sql = """delete from roo.rules_to_commodities where country_prefix = 'gsp';"""
+        d = Database()
+        params = []
+        d.run_query(sql, params)
+
     def export_to_json(self, country, scope):
         d = Database()
         
@@ -354,64 +419,6 @@ class CodeList(object):
                     destination = source.replace("html/", "html_final/")
                     destination = destination.replace(files[0], filename)
                     shutil.copy(source, destination)
-
-    def scrape_twuk(self):
-        self.get_export_folder()
-
-        url_template = "https://www.get-rules-tariffs-trade-with-uk.service.gov.uk/country/{{country}}/commodity/{{id}}/{{sid}}"
-        # countries = ["FR", "JP"]
-        countries = ["CA"]
-        min_code = "271020"
-        # min_code = "6201999999"
-        # min_code = "0"
-        for country in countries:
-            for ex in self.exemplar_codes:
-                if ex.goods_nomenclature_item_id > min_code:
-                    url = url_template.replace("{{country}}", country)
-                    url = url.replace("{{sid}}", ex.goods_nomenclature_sid)
-                    url = url.replace("{{id}}", ex.goods_nomenclature_item_id)
-
-                    response = requests.get(url)
-                    soup = BeautifulSoup(response.text, "html.parser")
-                    # ('div#rules-of-origin')
-                    my_divs = soup.findAll("div", {"id": "rules-of-origin"})
-                    if (my_divs):
-                        my_div = my_divs[0]
-                        temp = my_div.select(".app-flexible-table")
-
-                        if len(temp) > 0:
-                            pse_table = my_div.select(
-                                ".app-flexible-table")[0].prettify()
-                            pse_table = pse_table.replace(
-                                " app-flexible-table__header", "")
-                            pse_table = pse_table.replace(
-                                " app-flexible-table__head", "")
-                            pse_table = pse_table.replace(
-                                " app-flexible-table__body", "")
-                            pse_table = pse_table.replace(
-                                " app-flexible-table__row", "")
-                            pse_table = pse_table.replace(
-                                " app-flexible-table__cell", "")
-                            pse_table = pse_table.replace(
-                                " app-flexible-table", "")
-                            pse_table = pse_table.replace(' rowspan="1"', "")
-                            pse_table = pse_table.replace(
-                                ' data-target="hierarchy-modal" data-toggle="modal" href="javascript:void(0)"', "")
-                            pse_table = pse_table.replace(
-                                ' class="hierarchy-modal"', "")
-                            pse_table = sub(
-                                r'<a data-href=[^>]+>([^<]+)<\/a>', r'\1', pse_table)
-                        else:
-                            pse_table = "<p>No data</p>"
-
-                        filename = country + "_" + \
-                            ex.goods_nomenclature_item_id[0:6] + ".html"
-                        print(filename)
-                        filename = os.path.join(self.export_folder, filename)
-
-                        f = open(filename, "w+")
-                        f.write(pse_table)
-                        f.close()
 
     def get_codes(self):
         self.get_exemplar_codes_filename()
