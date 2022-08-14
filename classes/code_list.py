@@ -2,13 +2,7 @@ import os
 from re import sub
 import sys
 from datetime import datetime
-from classes.database import Database
-from classes.classification import Classification
-from classes.eu_roo import EuRoo
-from classes.classic_roo import ClassicRoo
-import requests
 import csv
-from bs4 import BeautifulSoup
 import filecmp
 import collections
 import shutil
@@ -17,11 +11,16 @@ from urllib.request import urlopen
 from dotenv import load_dotenv
 import logging
 
+from classes.database import Database
+from classes.classification import Classification
+from classes.eu_roo import EuRoo
+from classes.classic_roo import ClassicRoo
+from classes.rule import Rule
+
 
 class CodeList(object):
     def __init__(self):
-        logging.basicConfig(filename='log/app.log', filemode='w',
-                            format='%(name)s - %(levelname)s - %(message)s')
+        logging.basicConfig(filename='log/app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
         load_dotenv('.env')
         self.config = {}
         self.config["min_code"] = os.getenv('MIN_CODE')
@@ -30,6 +29,8 @@ class CodeList(object):
         self.config["write_files"] = bool(os.getenv('WRITE_FILES'))
         self.config["save_to_db"] = bool(os.getenv('SAVE_TO_DB'))
         self.config["overwrite_db"] = bool(os.getenv('OVERWRITE_DB'))
+
+        self.rule_sets = []
 
         self.load_exemplar_codes()
 
@@ -53,7 +54,6 @@ class CodeList(object):
             for item in tmp:
                 if item.goods_nomenclature_item_id == self.config["specific_code"]:
                     self.exemplar_codes.append(item)
-        a = 1
 
     def get_exemplar_codes_filename(self):
         folder = os.getcwd()
@@ -108,15 +108,7 @@ class CodeList(object):
                                 f = open(file, "w+")
                                 json.dump(data_json, f, indent=4)
                                 f.close()
-
-                                if 1 > 2:
-                                    rules = data_json["rules"]
-                                    footnotes = data_json["footnotes"]
-
-                                    for (k, v) in rules.items():
-                                        eu_roo = EuRoo(
-                                            k, v, footnotes, country, ex.goods_nomenclature_item_id, self.config)
-                            except:
+                            except Exception as e:
                                 logging.error("Exception occurred", exc_info=True)
                 else:
                     # Classic lookup for Turkey, Kenya and GSP
@@ -148,7 +140,7 @@ class CodeList(object):
                                 f = open(file, "w+")
                                 json.dump(data_json, f, indent=4)
                                 f.close()
-                            except:
+                            except Exception as e:
                                 logging.error("Exception occurred", exc_info=True)
 
     def get_heading_descriptions(self):
@@ -171,14 +163,14 @@ class CodeList(object):
                     if extent[0][0:2] == chapter:
                         if extent[0][2:4] != "00":
                             self.heading_extents_dict[chapter].append(extent[0])
-        
+
         a = 1
         d = Database()
         sql = """
         select distinct on (gnd.goods_nomenclature_item_id)
         gnd.goods_nomenclature_item_id, coalesce(gnd.description, '') as description
-        from goods_nomenclature_descriptions gnd, goods_nomenclature_description_periods gndp 
-        where gnd.goods_nomenclature_sid = gndp.goods_nomenclature_sid 
+        from goods_nomenclature_descriptions gnd, goods_nomenclature_description_periods gndp
+        where gnd.goods_nomenclature_sid = gndp.goods_nomenclature_sid
         and right(gnd.goods_nomenclature_item_id, 4) = '0000'
         -- and right(gnd.goods_nomenclature_item_id, 8) != '00000000'
         order by gnd.goods_nomenclature_item_id,  gndp.validity_start_date desc
@@ -194,51 +186,52 @@ class CodeList(object):
         root_path = os.path.join(root_path, "resources", "json")
         paths = []
         directory_contents = os.listdir(root_path)
-        for item in directory_contents:
-            item2 = os.path.join(root_path, item)
-            if os.path.isdir(item2):
-                print(item2)
-                paths.append(item)
+        for file in directory_contents:
+            file_path = os.path.join(root_path, file)
+            if os.path.isdir(file_path):
+                print(file_path)
+                paths.append(file)
 
         if self.config["specific_country"] is not None:
             paths2 = []
             for path in paths:
                 if path == self.config["specific_country"]:
                     paths2.append(path)
-                    
+
             paths = paths2
-        
+
         paths.sort()
         # In which the paths are the countries that are representative of the RoO schemes
         for path in paths:
             if path == "AF":
                 self.clear_db(path)
-                
+
             country = self.get_country(path)
             path2 = os.path.join(root_path, path)
             directory_contents = os.listdir(path2)
             self.do_timestamp()
-            items = []
+            json_files = []
             if self.config["specific_code"] != "" and self.config["specific_code"] is not None:
-                items.append(self.config["specific_code"][0:6] + ".json")
+                json_files.append(self.config["specific_code"][0:6] + ".json")
             else:
                 for item in directory_contents:
-                    items.append(item)
-                    
-            items.sort()
+                    json_files.append(item)
+
+            json_files.sort()
             # In which the items are the downloaded files (the headings for the new RoO types, and the chapters for the old, classic ones)
-            for item in items:
-                item2 = os.path.join(path2, item)
-                subheading = item.replace(".json", "")
-                if os.path.isfile(item2) and ".json" in item2: # and item >= "3824":
+            for json_file in json_files:
+                json_file_path = os.path.join(path2, json_file)
+                subheading = json_file.replace(".json", "")
+                if os.path.isfile(json_file_path) and ".json" in json_file_path:  # and item >= "3824":
                     if country["source"] == "product":
+                        # New data files
                         print("Getting commodity {0} from MADB for {1} ({2})".format(
                             subheading,
                             country["code"],
                             country["prefix"]
                         ))
 
-                        f = open(item2)
+                        f = open(json_file_path)
                         data_json = json.load(f)
                         rules = data_json["rules"]
                         footnotes = data_json["footnotes"]
@@ -246,23 +239,19 @@ class CodeList(object):
                         for (k, v) in rules.items():
                             eu_roo = EuRoo(k, v, footnotes, country, subheading, self.config, self.headings_dict, self.heading_extents_dict)
                     else:
-                        print("Getting classic {0} from MADB for {1} ({2})".format(
-                            subheading,
-                            country["code"],
-                            country["prefix"]
-                        ))
+                        # Old style data files
+                        print("Getting classic {0} from MADB for {1} ({2})".format(subheading, country["code"], country["prefix"]))
 
-                        f = open(item2)
+                        f = open(json_file_path)
                         data_json = json.load(f)
-                        if subheading != "xchapter_28":
-                            classic_roo = ClassicRoo(data_json, country, subheading, self.config)
-                        a = 1
-                        
-            if country["source"] != "product":
-                a = 1
-                self.apply_classic_rules_to_commodities()
-            
+                        classic_roo = ClassicRoo(data_json, country, subheading, self.config)
+                        self.rule_sets += classic_roo.get_rule_sets()
+
+            # if country["source"] != "product":
+            #     self.apply_classic_rules_to_commodities()
+
             self.export_to_json(country, "xi")
+            self.export_rule_sets_strategic(country)
             self.do_timestamp()
 
     def apply_classic_rules_to_commodities(self):
@@ -275,45 +264,45 @@ class CodeList(object):
         d = Database()
         params = []
         classic_rules = d.run_query(sql, params)
-        
+
         for ex in self.exemplar_codes:
             print("Finding rule for subheading", ex.goods_nomenclature_item_id[0:6])
             ex1 = ex.goods_nomenclature_item_id[0:6] + "0000"
             ex2 = ex.goods_nomenclature_item_id[0:6] + "9999"
             for classic_rule in classic_rules:
                 if ex2 >= classic_rule[1] and ex1 < classic_rule[2]:
-                    # Then save the relationship with the subheading
+                    # Then save the relationship with the subheading
                     d = Database()
                     sql = """
                     INSERT INTO roo.rules_to_commodities
                     (
-                        id_rule, scope, sub_heading, country_prefix
+                        id_rule, scope, subheading, country_prefix
                     )
                     VALUES
                     (%s, %s, %s, %s)
                     ON CONFLICT DO NOTHING
                     """
-                    
+
                     params = [
                         classic_rule[0],
                         "xi",
                         ex.goods_nomenclature_item_id[0:6],
-                        "gsp", 
+                        "gsp",
                     ]
                     d.run_query(sql, params)
-                    
+
                     break
         a = 1
-    
+
     def clear_db(self, path):
         print("Clearing database of previous entries")
-        
+
         # Delete the rules themselves
         sql = """delete from roo.rules r where country_prefix = 'gsp';"""
         d = Database()
         params = []
         d.run_query(sql, params)
-        
+
         # Delete the rules' associations with commodities
         sql = """delete from roo.rules_to_commodities where country_prefix = 'gsp';"""
         d = Database()
@@ -322,18 +311,18 @@ class CodeList(object):
 
     def export_to_json(self, country, scope):
         d = Database()
-        
+
         sql = """
-        select sub_heading, heading, description, rule,
+        select subheading, heading, description, rule,
         alternate_rule, quota_amount, quota_unit, key_first, key_last
         from roo.rules_to_commodities rtc, roo.rules r
-        where r.id_rule = rtc.id_rule 
+        where r.id_rule = rtc.id_rule
         and r.country_prefix = %s
         and r.scope = %s
         and rtc.scope = %s
-        order by sub_heading;
+        order by subheading;
         """
-        
+
         params = [
             country["prefix"],
             scope,
@@ -369,9 +358,9 @@ class CodeList(object):
             if country["code"] == path:
                 ret = country
                 break
-            
+
         return ret
-    
+
     def do_replacements(self, s):
         s = s.replace('<td><p class="doc_text">', '<td class="doc_text">')
         return (s)
@@ -387,7 +376,7 @@ class CodeList(object):
                 stem = entry.name[0:7]
                 try:
                     self.html_finals[stem]["files"].append(entry.name)
-                except:
+                except Exception as e:
                     obj = {}
                     obj["files"] = [entry.name]
                     self.html_finals[stem] = obj
@@ -476,59 +465,24 @@ class CodeList(object):
 
         f.close()
 
-class Rule(object):
-    def __init__(self, row = None):
-        if row is None:
-            self.sub_heading = None
-            self.heading = None
-            self.description = None
-            self.rule = None
-            self.alternate_rule = None
-            self.quota_amount = None
-            self.quota_unit = None
-            self.key_first = None
-            self.key_last = None
-        else:
-            self.sub_heading = row[0]
-            self.heading = row[1]
-            self.description = row[2]
-            self.rule = row[3]
-            self.alternate_rule = row[4]
-            self.quota_amount = row[5]
-            self.quota_unit = row[6]
-            self.key_first = row[7]
-            self.key_last = row[8]
+    def export_rule_sets_strategic(self, country):
+        self.scheme_code = country["prefix"]
+        self.make_export_folder()
+        self.get_jason_strategic_filename()
+        self.extract = {}
+        self.extract["rule_sets"] = self.rule_sets
+        f = open(self.json_strategic_filename, "w")
+        json.dump(self.extract, f, indent=4)
+        f.close()
 
-    def equates_to(self, rule):
-        equal = True
-        if self.sub_heading != rule.sub_heading:
-            equal = False
-        elif self.heading != rule.heading:
-            equal = False
-        elif self.description != rule.description:
-            equal = False
-        elif self.description != rule.description:
-            equal = False
-        elif self.rule != rule.rule:
-            equal = False
-        elif self.alternate_rule != rule.alternate_rule:
-            equal = False
-        elif self.key_first != rule.key_first:
-            equal = False
-        elif self.key_last != rule.key_last:
-            equal = False
-        
-        return equal
-    
-    def asdict(self):
-        return {
-            'sub_heading': self.sub_heading,
-            'heading': self.heading,
-            'description': self.description,
-            'rule': self.rule,
-            'alternate_rule': self.alternate_rule,
-            'quota_amount': self.quota_amount,
-            'quota_unit': self.quota_unit,
-            'key_first': self.key_first,
-            'key_last': self.key_last
-        }
+    def make_export_folder(self):
+        self.json_strategic_folder = os.getcwd()
+        self.json_strategic_folder = os.path.join(self.json_strategic_folder, "resources")
+        self.json_strategic_folder = os.path.join(self.json_strategic_folder, "json_strategic")
+        if not os.path.isdir(self.json_strategic_folder):
+            os.mkdir(self.json_strategic_folder)
+        a = 1
+
+    def get_jason_strategic_filename(self):
+        a = 1
+        self.json_strategic_filename = os.path.join(self.json_strategic_folder, self.scheme_code + ".json")

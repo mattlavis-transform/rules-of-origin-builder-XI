@@ -10,10 +10,9 @@ import logging
 class EuRoo(object):
     def __init__(self, key, rules, footnote_data, country, goods_nomenclature_item_id, config, headings_dict, heading_extents_dict):
         global code_list
-        logging.basicConfig(filename='log/app.log', filemode='w',
-                            format='%(name)s - %(levelname)s - %(message)s')
+        logging.basicConfig(filename='log/app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
         self.goods_nomenclature_item_id = goods_nomenclature_item_id
-        self.sub_heading = self.goods_nomenclature_item_id[0:6]
+        self.subheading = self.goods_nomenclature_item_id[0:6]
         self.config = config
         self.headings_dict = headings_dict
         self.heading_extents_dict = heading_extents_dict
@@ -73,7 +72,7 @@ class EuRoo(object):
                         self.headings_dict[comm_code].lower().capitalize()
             a = 1
             self.key = self.key_verbatim
-            
+
         elif "Chapter" in tmp:
             tmp = tmp.replace("Chapter", "")
             tmp = tmp.strip()
@@ -83,7 +82,7 @@ class EuRoo(object):
             else:
                 self.key_min = tmp
                 self.key_max = tmp
-            
+
             if self.ex:
                 self.key = "ex&nbsp;" + self.key
         else:
@@ -111,13 +110,13 @@ class EuRoo(object):
             self.rules[i]["description_string"] = self.fmt(self.rules[i]["description"], do_markdown=False)
             self.rules[i]["rule_string"] = self.fmt(self.rules[i]["rule"])
             self.rules[i]["alternate_rule_string"] = self.fmt(self.rules[i]["alternateRule"])
-            
+
             # For Canada - CC
             if "Change of chapter" in self.rules[i]["rule_string"]:
                 if "CC" not in self.rules[i]["rule_string"]:
                     self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("Change of chapter", "Change of chapter - CC")
                 self.rules[i]["rule_string"] += "{{CC}}"
-                
+
             # For Japan - CC
             elif "CC" in self.rules[i]["rule_string"]:
                 self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("CC", "Change of chapter - CC")
@@ -128,7 +127,7 @@ class EuRoo(object):
                 if "CTH" not in self.rules[i]["rule_string"]:
                     self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("A change from any other heading", "A change from any other heading - CTH")
                 self.rules[i]["rule_string"] += "{{CTH}}"
-                
+
             # For Japan - CTH
             elif "CTH" in self.rules[i]["rule_string"]:
                 self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("CTH", "A change from any other heading - CTH")
@@ -139,7 +138,7 @@ class EuRoo(object):
                 if "CTSH" not in self.rules[i]["rule_string"]:
                     self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("A change from any other subheading", "A change from any other subheading - CTSH")
                 self.rules[i]["rule_string"] += "{{CTSH}}"
-                
+
             # For Japan - CTSH
             elif "CTSH" in self.rules[i]["rule_string"]:
                 self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("CTSH", "A change from any other subheading - CTSH")
@@ -148,22 +147,21 @@ class EuRoo(object):
             # For Japan - RVC
             if "RVC" in self.rules[i]["rule_string"]:
                 self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("RVC", "Regional Value Content - RVC")
-                
+
             if "wholly obtained" in self.rules[i]["rule_string"]:
                 self.rules[i]["rule_string"] += "{{WO}}"
 
-            if self.rules[i]["quota"]["amount"] != None:
+            if self.rules[i]["quota"]["amount"] is not None:
                 self.rules[i]["description_string"] = self.rules[i]["description_string"] + "{{RELAX}}"
 
             self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace(" ;", ";")
             self.rules[i]["rule_string"] = self.rules[i]["rule_string"].replace("; ", ";\n\n")
-            
+
             if self.rules[i]["description_string"][-10:] == "except for":
                 self.rules[i]["description_string"] = self.rules[i]["description_string"][:-10]
-                
+
             self.rules[i]["description_string"] = self.rules[i]["description_string"].strip()
             self.rules[i]["description_string"] = self.rules[i]["description_string"].strip(";")
-                    
 
     def fmt(self, s, do_markdown=True):
         footnote = ""
@@ -175,8 +173,7 @@ class EuRoo(object):
             s = s.replace(' xmlns:fn="http://www.w3.org/2005/xpath-functions"', '')
             s = s.replace(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"', '')
             s = s.replace('</p>\n', '</p>')
-            
-            
+
             s = s.replace(" %", "%")
             s = s.replace(r'[ul]', '<ul>')
             s = s.replace(r'[\ul]', '</ul>')
@@ -192,12 +189,10 @@ class EuRoo(object):
             s = s.replace(r')', ") ")
             s = s.replace(r',', ", ")
             s = re.sub(r'[ \t]+', ' ', s)
-            
+
             s = s.replace("<li><p>", "<li>")
             s = s.replace("</li> </ul>", "</li></ul>")
-            
-            
-            
+
             # Get footnotes
             regex = r'<footnote-ref[^>]+>([^<]+)<\/footnote-ref>'
             match = re.search(regex, s)
@@ -206,10 +201,10 @@ class EuRoo(object):
             s = re.sub(regex, '', s)
             s = s.strip()
             s = s.rstrip(":")
-            
+
             s = s.replace("\n", " ")
             s = s.replace("  ", " ")
-            
+
             # Convert the HTML into markdown
             if do_markdown:
                 s = md(s)
@@ -217,7 +212,7 @@ class EuRoo(object):
             if footnote != "":
                 try:
                     s = s + ". " + self.footnotes[footnote]
-                except:
+                except Exception as e:
                     pass
 
             s = s.replace("()", "")
@@ -228,7 +223,7 @@ class EuRoo(object):
             s = s.replace("\n.", "\n")
             s = s.replace("\n", "\n\n")
             s = s.replace("\n\n\n", "\n\n")
-            
+
             s = s.replace(" :", ":")
             s = re.sub(r'[\n]{1,5}:', ':', s, re.MULTILINE)
             s = re.sub(r'[ ]+,', ',', s, re.MULTILINE)
@@ -238,6 +233,7 @@ class EuRoo(object):
             return (s)
 
     def save_to_db(self):
+        print("Saving to DB")
         for i in range(0, len(self.rules)):
             if self.rules[i]["idRule"] is not None:
                 # First save the rule itself, if it needs to be saved
@@ -277,12 +273,12 @@ class EuRoo(object):
                 ]
                 d.run_query(sql, params)
 
-                # Then save the relationship with the subheading
+                # Then save the relationship with the subheading
                 d = Database()
                 sql = """
                 INSERT INTO roo.rules_to_commodities
                 (
-                    id_rule, scope, sub_heading, country_prefix
+                    id_rule, scope, subheading, country_prefix
                 )
                 VALUES
                 (%s, %s, %s, %s)
@@ -292,7 +288,7 @@ class EuRoo(object):
                 params = [
                     self.rules[i]["idRule"],
                     "xi",
-                    self.sub_heading,
+                    self.subheading,
                     self.country_prefix,
                 ]
                 d.run_query(sql, params)
@@ -319,7 +315,7 @@ class HeadingRange(object):
 
         if self.description == "Missing description":
             self.description = 'The List of "Product-specific Rules of Origin" does not contain a description of the product at this point.'
-            
+
         elif "-" in self.description:
             # Matches 01.02 - 01.09, here we are looking just for a range
             # which actually covers an entire chapter
@@ -354,14 +350,14 @@ class HeadingRange(object):
                             if heading >= self.key_min:
                                 if heading <= self.key_max:
                                     match_count += 1
-                                    
+
                         if match_count < 11:
                             for heading in chapter_extent:
                                 if heading >= self.key_min:
                                     if heading <= self.key_max:
                                         try:
                                             tmp += heading + ": " + self.headings_dict[heading.ljust(10, "0")] + "\n\n"
-                                        except:
+                                        except Exception as e:
                                             print(heading)
                                             sys.exit()
 
@@ -374,7 +370,7 @@ class HeadingRange(object):
                 if self.description.isdecimal():
                     comm_code = self.description.ljust(10, "0")
                     self.description = self.headings_dict[comm_code].lower().capitalize()
-                
+
         elif len(self.description) == 7:
             # Matches 0402.10 etc.
             if "." in self.description:
@@ -385,6 +381,5 @@ class HeadingRange(object):
                     self.description = self.headings_dict[comm_code_heading].lower().capitalize()
                     self.description += " : "
                     self.description += self.headings_dict[comm_code_subheading].lower().capitalize()
-                
-        
+
         return self.description

@@ -62,3 +62,17 @@
   `python3 export_to_json.py`
 
 - This runs through the Postgres database and creates a JSON file that can be used in the OTT prototype
+
+### What process_roo.py does
+
+#### For Classic Rules of origin (e.g. GSP)
+
+This is all a lot harder than the work on Word documents, as it does not allow you to change the originals
+
+1. Having downloaded all of the JSONs for each chapter in a previous step ...
+2. Create a new ClassicRoo object against each
+3. Main cleansing rules are stored in classic_roo > **cleanse_rules**
+4. Main code to form relevant data are stored in classic_roo > **deconstruct_rules_html**
+5. deconstruct_rules_html creates a **ClassicRooRow** object for every table row in the MADB html
+6. ClassicRooRow is where the actual formation of destination data is completed
+   1. It creates a series of ClassicRooCell objects under the self.cells object
