@@ -7,7 +7,7 @@ from classes_classic.classic_roo import ClassicRoo
 
 
 class ClassicRooFolder(object):
-    def __init__(self, country_code, scheme_code):
+    def __init__(self, country_code, scheme_code, copy_options):
         print("Processing data for {country_code} ({scheme_code})".format(country_code=country_code, scheme_code=scheme_code))
         self.get_chapters_to_process()
 
@@ -16,6 +16,7 @@ class ClassicRooFolder(object):
         self.export_path_xi = os.getenv('EXPORT_PATH_XI')
         self.country_code = country_code
         self.scheme_code = scheme_code
+        self.copy_options = copy_options
         self.rule_sets = []
 
     def get_chapters_to_process(self):
@@ -73,6 +74,8 @@ class ClassicRooFolder(object):
         json_file_path = os.path.join(self.json_path, json_file)
         f = open(json_file_path)
         data_json = json.load(f)
+        if len(data_json) > 1:
+            data_json = [data_json[0]]
         classic_roo = ClassicRoo(data_json, subheading, self.country_code, self.scheme_code)
         self.rule_sets += classic_roo.rules_json
         f.close()
@@ -104,10 +107,11 @@ class ClassicRooFolder(object):
         self.json_files.sort()
 
     def copy_to_destination(self, which):
-        source = self.json_strategic_filename
-        if which == "xi":
-            destination = self.export_path_xi
-        else:
-            destination = self.export_path_uk
+        if which in self.copy_options:
+            source = self.json_strategic_filename
+            if which == "xi":
+                destination = self.export_path_xi
+            else:
+                destination = self.export_path_uk
 
-        shutil.copy(source, destination)
+            shutil.copy(source, destination)

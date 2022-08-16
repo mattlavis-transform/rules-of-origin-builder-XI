@@ -134,7 +134,7 @@ class ClassicRooScheme(object):
         self.rules = re.sub(r' width=[0-9]*%', "", self.rules)
         self.rules = re.sub(r' class="chapter"', "", self.rules)
         self.rules = re.sub(r'<td><br/></td>', "<td>&nbsp;</td>", self.rules)
-
+        self.rules = re.sub(r'wholly\nobtained', "wholly obtained", self.rules)
         self.rules = re.sub(r'<th[^>]*>', "<th>", self.rules)
         self.rules = re.sub(r'<table[^>]*>', "<table>", self.rules)
         self.rules = re.sub(r'>[ ]+', ">", self.rules)

@@ -59,6 +59,22 @@ class ClassicRooRow(object):
         self.rule_text = self.rule_text.replace("of\n\nm\n\n-phenylenediamine", "of m-phenylenediamine")
         self.rule_text = self.rule_text.replace("\npoly(\n\np\n\n-phenylene\n", "poly (p-phenylene ")
         self.rule_text = self.rule_text.replace("Chapter ruleapplies", "Chapter rule applies")
+        self.rule_text = re.sub("\n-([^ ])", "\n- \\1", self.rule_text)
+        self.rule_text = self.rule_text.replace("\n-  ", "\n- ")
+        self.rule_text = self.rule_text.replace("headings Nos", "headings")
+        self.rule_text = self.rule_text.replace("heading No", "heading")
+        self.rule_text = self.rule_text.replace(" or \n- ", " *or*\n\n- ")
+
+        # This is meant to remove all single \n combos.
+        # \n\nor\n\n
+        self.rule_text = self.rule_text.replace("or \n", "or\n")
+        self.rule_text = self.rule_text.replace("\n\nor\n", "\n\nor\n\n")
+        self.rule_text = self.rule_text.replace("\nor\n- ", "\n\nor\n\n- ")
+        self.rule_text = self.rule_text.replace("\n\n\n", "\n\n")
+        self.rule_text = self.rule_text.replace("\n\nor\n\n", "TEMPOR")
+        self.rule_text = re.sub(r"([^\n])\n([^\n])", "\\1 \\2", self.rule_text)
+        self.rule_text = self.rule_text.replace(" \n", "\n")
+        self.rule_text = self.rule_text.replace("TEMPOR", "\n\nor\n\n")
 
         if "formation" in self.rule_text:
             a = 1
@@ -74,6 +90,7 @@ class ClassicRooRow(object):
         self.subdivision_text = self.subdivision_text.replace("except\nfor:", "except for")
         self.subdivision_text = self.subdivision_text.replace("except for:", "")
         self.subdivision_text = self.subdivision_text.replace("except for", "")
+        self.subdivision_text = self.subdivision_text.replace("- - ", "- ")
         self.subdivision_text = self.subdivision_text.strip()
         self.subdivision_text = self.subdivision_text.rstrip(";")
 
@@ -102,6 +119,7 @@ class ClassicRooRow(object):
         self.rule_text = self.rule_text.replace("\n or", "\nor")
         self.rule_text = self.rule_text.replace("\n\nOr\n\n", "\n\nor\n\n")
         self.rule_text = re.sub("\[[0-9]{1,3}\]", "", self.rule_text)
+        # self.rule_text = self.rule_text.replace("ORDIVIDER", "\n\nor\n\n")
         parts = self.rule_text.split("\n\nor\n\n")
         if len(parts) > 1:
             for part in parts:
@@ -143,6 +161,7 @@ class ClassicRooRow(object):
             self.heading_list = self.heading_text.split(",")
 
     def format_heading_text(self):
+        self.heading_text = self.heading_text.replace("\n", " ")
         self.heading_text = self.heading_text.replace(" to ", " - ")
         self.heading_text = self.heading_text.replace("-", " - ")
         self.heading_text = self.heading_text.replace(";", ",")
@@ -230,6 +249,10 @@ class ClassicRooRow(object):
             if cell.text != "":
                 self.valid = True
                 break
+
+        # However, if it is just a list of (1), (2) etc then it is invalid
+        if "(1)" in self.cells[0].text:
+            self.valid = False
 
     def as_dict(self):
         s = {

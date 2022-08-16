@@ -11,5 +11,5 @@ f.close()
 for item in data:
     if item["source"] == "classic":
         if item["omit"] != 1:
-            classic_roo_folder = ClassicRooFolder(item["code"], item["prefix"])
+            classic_roo_folder = ClassicRooFolder(item["code"], item["prefix"], item["copy_options"])
             classic_roo_folder.process_roo_classic()
