@@ -1,21 +1,11 @@
-import os
 from re import sub
-import sys
 from datetime import datetime
 from classes.database import Database
-from classes.classification import Classification
-from classes.eu_roo import EuRoo
-from classes.classic_roo import ClassicRoo
-import requests
-import csv
+from classes_product.classification import Classification
+from classes_product.eu_roo import EuRoo
 from bs4 import BeautifulSoup
-import filecmp
-import collections
-import shutil
-import json
 from urllib.request import urlopen
 from dotenv import load_dotenv
-import logging
 
 
 class Rule(object):

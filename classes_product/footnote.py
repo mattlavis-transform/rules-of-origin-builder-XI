@@ -1,9 +1,5 @@
-import os
-import sys
-from classes.database import Database
-import json
-from dotenv import load_dotenv
 import logging
+from classes.database import Database
 
 
 class Footnote(object):
@@ -21,8 +17,7 @@ class Footnote(object):
         ON CONFLICT (code) DO UPDATE
         SET content = %s
         """
-        # UPDATE SET content = %s
-        
+
         params = [
             self.code,
             self.content,

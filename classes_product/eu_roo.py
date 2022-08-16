@@ -3,7 +3,7 @@ import sys
 import re
 from markdownify import markdownify as md
 from classes.database import Database
-from classes.footnote import Footnote
+from classes_product.footnote import Footnote
 import logging
 
 

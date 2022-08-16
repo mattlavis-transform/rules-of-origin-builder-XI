@@ -7,9 +7,9 @@ from lxml import html
 from lxml.cssselect import CSSSelector
 from cssselect import GenericTranslator
 
-from classes.classic_roo_row import ClassicRooRow
-from classes.classic_roo_scheme_html import ClassicRooSchemeHtml
-from classes.footnote import Footnote
+from classes_classic.classic_roo_row import ClassicRooRow
+from classes_classic.classic_roo_scheme_html import ClassicRooSchemeHtml
+# from classes.footnote import Footnote
 
 
 class ClassicRooScheme(object):
@@ -85,6 +85,8 @@ class ClassicRooScheme(object):
     def get_rules_json(self):
         self.rules_json = []
         for row in self.roo_rows2:
+            if row.is_ex_code:
+                row.heading_text = "ex " + row.heading_text
             self.rules_json.append(row.as_dict())
         a = 1
 
@@ -93,8 +95,23 @@ class ClassicRooScheme(object):
         if self.rules is None:
             self.rules = ""
         self.rules = self.rules + ""
+        if "calendering" in self.rules:
+            a = 1
 
-        self.rules = re.sub(r"\n", " ", self.rules)
+        self.rules = re.sub(r'\t', " ", self.rules)
+        self.rules = re.sub("\\'fnB?[0-9]{1,3}\\'", "", self.rules)
+        self.rules = re.sub("onclick=\"scrollToRoo\(\)\"", "", self.rules)
+        self.rules = re.sub(' class="[^"]{1,50}"', "", self.rules)
+        self.rules = re.sub(' id="[^"]{1,50}"', "", self.rules)
+        self.rules = re.sub(' +>', ">", self.rules)
+        self.rules = re.sub('<a>\[[0-9]+\]</a>', "", self.rules)
+        self.rules = re.sub('<sup>', "", self.rules)
+        self.rules = re.sub('</sup>', "", self.rules)
+        self.rules = re.sub('<li>', "\nBULLET", self.rules)
+        self.rules = re.sub('</li>', "\n", self.rules)
+        self.rules = re.sub('<ul>', "\n", self.rules)
+        self.rules = re.sub('</ul>', "\n", self.rules)
+
         self.rules = re.sub(r'<i>', "", self.rules)
         self.rules = re.sub(r'</i>', "", self.rules)
         self.rules = re.sub(r'<b>', "", self.rules)
@@ -141,6 +158,10 @@ class ClassicRooScheme(object):
         self.rules = re.sub(r'\<td\>\<div\>', "<td>", self.rules)
         self.rules = re.sub(r'<td></td>', "<td>&nbsp;</td>", self.rules)
 
+        self.rules = self.rules.replace("BULLET", "-")
+        self.rules = self.rules.replace("Chapter s ", "Chapters ")
+        self.rules = self.rules.replace(" %", "%")
+
         self.rules = self.rules.strip()
 
         # Use Beautiful Soup to prettify
@@ -167,16 +188,7 @@ class ClassicRooScheme(object):
         self.rules = re.sub(r'</div>', '', self.rules)
         self.rules = re.sub(r'<span[^>]+>', '', self.rules)
         self.rules = re.sub(r'</span>', '', self.rules)
-
-    def parse_footnotes(self):
-        self.footnotes = {}
-        for footnote in self.footnote_data:
-            f = Footnote()
-            f.code = footnote["code"]
-            f.content = self.fmt(footnote["content"])
-            f.content = md(f.content)
-            f.save()
-            self.footnotes[f.code] = f.content
+        a = 1
 
     def parse_key(self):
         # Function not used
@@ -208,11 +220,11 @@ class ClassicRooScheme(object):
 
     def format_rules_and_descriptions(self):
         for i in range(0, len(self.rules)):
-            self.rules[i]["description_string"] = self.fmt(self.rules[i]["description"], do_markdown=False)
+            self.rules[i]["description_string"] = self.fmt(self.rules[i]["description"], convert_to_markdown=False)
             self.rules[i]["rule_string"] = self.fmt(self.rules[i]["rule"])
             self.rules[i]["alternate_rule_string"] = self.fmt(self.rules[i]["alternateRule"])
 
-    def fmt(self, s, do_markdown=True):
+    def fmt(self, s, convert_to_markdown=True):
         footnote = ""
         if s is None:
             return ""
@@ -234,7 +246,7 @@ class ClassicRooScheme(object):
             s = re.sub(regex, '', s)
             s = s.strip()
             s = s.rstrip(":")
-            if do_markdown:
+            if convert_to_markdown:
                 s = md(s)
             s = re.sub(r'\n\n\n', '\n\n', s, re.MULTILINE)
             if footnote != "":

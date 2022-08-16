@@ -1,7 +1,6 @@
 import logging
 
-from classes.classic_roo_scheme import ClassicRooScheme
-import classes.globals as g
+from classes_classic.classic_roo_scheme import ClassicRooScheme
 
 
 class ClassicRoo(object):

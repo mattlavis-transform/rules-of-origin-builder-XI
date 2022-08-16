@@ -1,7 +1,8 @@
+import re
 from markdownify import markdownify as md
 
-from classes.classic_roo_cell import ClassicRooCell
-from classes.classic_roo_rule import ClassicRooRule
+from classes_classic.classic_roo_cell import ClassicRooCell
+from classes_classic.classic_roo_rule import ClassicRooRule
 import classes.globals as g
 
 
@@ -33,14 +34,74 @@ class ClassicRooRow(object):
                 self.normalise_cells()
                 self.validate_row()
                 self.assign_cells_to_objects()
+                self.format_subdivision()
                 self.format_heading_text()
+                self.carry_over_heading()
+                self.formal_rules_final()
                 self.delete_unwanted_variables()
         else:
             self.subheading = None
             self.valid = False
 
+    def formal_rules_final(self):
+        self.rule_text = self.rule_text.replace("and \n", "and\n")
+        self.rule_text = self.rule_text.replace(" and\n-", " *and*\n-")
+        self.rule_text = self.rule_text.replace("- - ", "- ")
+        self.rule_text = self.rule_text.replace("\n ", "\n")
+        self.rule_text = self.rule_text.replace("acrylic\n\nyarn", "acrylic yarn")
+        self.rule_text = self.rule_text.replace("coating\n\nOnly", "coating. Only")
+        self.rule_text = self.rule_text.replace("and/or", "and / or")
+        self.rule_text = self.rule_text.replace("or\n", "or ")
+        self.rule_text = self.rule_text.replace("\n\n\n", "\n\n")
+        self.rule_text = self.rule_text.replace("9\ndecitex", "9 decitex")
+        self.rule_text = self.rule_text.replace("decitex,\n\nmay", "decitex, may")
+        self.rule_text = self.rule_text.replace("fabric\nformation", "fabric\nformation")
+        self.rule_text = self.rule_text.replace("of\n\nm\n\n-phenylenediamine", "of m-phenylenediamine")
+        self.rule_text = self.rule_text.replace("\npoly(\n\np\n\n-phenylene\n", "poly (p-phenylene ")
+        self.rule_text = self.rule_text.replace("Chapter ruleapplies", "Chapter rule applies")
+
+        if "formation" in self.rule_text:
+            a = 1
+
+        self.rule_text = self.rule_text.replace(",\n", "\n")
+
+        self.rule_text = re.sub("([0-9]{1,2}),([0-9]{1,2})%", "\\1.\\2%", self.rule_text)
+
+        # self.rule_text = self.rule_text + "."
+        self.rule_text = self.rule_text.strip()
+
+    def format_subdivision(self):
+        self.subdivision_text = self.subdivision_text.replace("except\nfor:", "except for")
+        self.subdivision_text = self.subdivision_text.replace("except for:", "")
+        self.subdivision_text = self.subdivision_text.replace("except for", "")
+        self.subdivision_text = self.subdivision_text.strip()
+        self.subdivision_text = self.subdivision_text.rstrip(";")
+
+    def carry_over_heading(self):
+        self.is_heading = False
+        if self.valid:
+            if len(self.cells) == 3:
+                if self.cells[2].text == '':
+                    self.is_heading = True
+            elif len(self.cells) == 4:
+                if self.cells[2].text == '' and self.cells[3].text == '':
+                    self.is_heading = True
+
+        if self.is_heading:
+            g.heading_carry_over = self.cells[1].text
+            # self.valid = False
+        else:
+            g.heading_carry_over = ""
+
     def format_rules(self):
         self.rules = []
+        self.rule_text = self.rule_text.replace("or \n", "or\n")
+        self.rule_text = self.rule_text.replace("\n \n", "\n\n")
+        self.rule_text = self.rule_text.replace("\n\nor\n", "\n\nor\n\n")
+        self.rule_text = self.rule_text.replace("\n\n\n", "\n\n")
+        self.rule_text = self.rule_text.replace("\n or", "\nor")
+        self.rule_text = self.rule_text.replace("\n\nOr\n\n", "\n\nor\n\n")
+        self.rule_text = re.sub("\[[0-9]{1,3}\]", "", self.rule_text)
         parts = self.rule_text.split("\n\nor\n\n")
         if len(parts) > 1:
             for part in parts:
@@ -52,12 +113,19 @@ class ClassicRooRow(object):
 
         self.rules_json = []
         for rule in self.rules:
-            self.rules_json.append(rule)
+            if rule["rule"] != "":
+                self.rules_json.append(rule)
 
     def assign_cells_to_objects(self):
         if self.valid:
             self.heading_text = self.cells[0].text
-            self.subdivision_text = self.cells[1].text
+            if g.heading_carry_over != "":
+                # Carry over the 'heading' text from the previous row
+                self.subdivision_text = g.heading_carry_over
+                self.subdivision_text += self.cells[1].text
+            else:
+                self.subdivision_text = self.cells[1].text
+
             if len(self.cells) > 2:
                 self.rule_text = self.cells[2].text
             else:
@@ -88,6 +156,8 @@ class ClassicRooRow(object):
         else:
             self.is_ex_code = False
 
+        self.heading_text = self.heading_text.replace("ex", "").strip()
+
     def get_chapter(self, subheading):
         self.subheading = subheading
         self.chapter = int(self.subheading.replace("chapter_", ""))
@@ -106,6 +176,7 @@ class ClassicRooRow(object):
             else:
                 if " - " in self.heading_text:
                     tmp = self.heading_text.replace("ex ", "")
+                    tmp = self.heading_text.replace("ex", "")
                     parts = tmp.split(" - ")
                     for part in parts:
                         part = part.replace(" ", "")

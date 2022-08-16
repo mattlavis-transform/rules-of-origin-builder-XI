@@ -12,10 +12,9 @@ from dotenv import load_dotenv
 import logging
 
 from classes.database import Database
-from classes.classification import Classification
-from classes.eu_roo import EuRoo
-from classes.classic_roo import ClassicRoo
-from classes.rule import Rule
+from classes_product.classification import Classification
+from classes_product.eu_roo import EuRoo
+from classes_product.rule import Rule
 
 
 class CodeList(object):
@@ -24,43 +23,65 @@ class CodeList(object):
         load_dotenv('.env')
         self.config = {}
         self.config["min_code"] = os.getenv('MIN_CODE')
+        self.config["max_code"] = os.getenv('MAX_CODE')
         self.config["specific_country"] = os.getenv('SPECIFIC_COUNTRY')
         self.config["specific_code"] = os.getenv('SPECIFIC_CODE')
         self.config["write_files"] = bool(os.getenv('WRITE_FILES'))
         self.config["save_to_db"] = bool(os.getenv('SAVE_TO_DB'))
         self.config["overwrite_db"] = bool(os.getenv('OVERWRITE_DB'))
 
+        self.url_template = os.getenv('url_template')
+        self.url_template_classic = os.getenv('url_template_classic')
+
         self.rule_sets = []
 
-        self.load_exemplar_codes()
-
+        self.get_current_subheadings()
         self.get_countries()
-        self.url_template = "https://webgate.ec.europa.eu/roo/public/v1/rules/product/{{id}}/country/EU/partner/{{country}}?app=madb&direction=IMPORT&format=HTML&language=EN"
-        self.url_template_classic = "https://webgate.ec.europa.eu/roo/public/v1/classic/chapter/{{id}}/country/{{country}}?language=EN"
 
-    def load_exemplar_codes(self):
-        self.get_exemplar_codes_filename()
+    def get_current_subheadings(self):
+        self.commodity_code_folder = os.getenv('commodity_code_folder')
+        files_temp = []
+        files = os.listdir(self.commodity_code_folder)
+        for file in files:
+            if ".csv" in file:
+                if "eu_commodities" in file:
+                    files_temp.append(file)
+
+        files_temp.sort(reverse=True)
+        latest_file = os.path.join(self.commodity_code_folder, files_temp[0])
         self.exemplar_codes = []
-        with open(self.filename) as csv_file:
+        with open(latest_file) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             line_count = 0
             for row in csv_reader:
-                ex = Classification(row[0], row[1], "80", -1, 1)
-                self.exemplar_codes.append(ex)
+                if line_count > 0:
+                    subheading = row[1][0:6]
+                    leaf = int(row[6])
+                    if leaf == 1:
+                        if subheading not in self.exemplar_codes:
+                            self.exemplar_codes.append(subheading)
 
-        if self.config["specific_code"] is not None and self.config["specific_code"] != "":
-            tmp = self.exemplar_codes
-            self.exemplar_codes = []
-            for item in tmp:
-                if item.goods_nomenclature_item_id == self.config["specific_code"]:
-                    self.exemplar_codes.append(item)
+                line_count += 1
 
-    def get_exemplar_codes_filename(self):
-        folder = os.getcwd()
-        folder = os.path.join(folder, "resources")
-        folder = os.path.join(folder, "csv")
-        filename = "exemplar_codes.csv"
-        self.filename = os.path.join(folder, filename)
+        self.strip_redundant_codes_from_simple_chapters()
+
+    def strip_redundant_codes_from_simple_chapters(self):
+        simple_chapters = [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 97, 98]
+        simple_chapter_exemplars = {}
+        expurgated_codes = []
+        for code in self.exemplar_codes:
+            chapter_as_integer = int(code[0:2])
+            subheading = code[0:4]
+            if chapter_as_integer in simple_chapters:
+                if subheading not in simple_chapter_exemplars:
+                    simple_chapter_exemplars[code[0:4]] = code
+                    expurgated_codes.append(code)
+            else:
+                expurgated_codes.append(code)
+
+        a = 1
+        self.exemplar_codes = None
+        self.exemplar_codes = expurgated_codes
 
     def get_countries(self):
         folder = os.getcwd()
@@ -76,21 +97,22 @@ class CodeList(object):
             for country in tmp:
                 if country["code"] == self.config["specific_country"]:
                     self.countries.append(country)
+        a = 1
 
     def scrape_roo(self):
         for country in self.countries:
             if country["omit"] != 1:
                 if country["source"] == "product":
-                    for ex in self.exemplar_codes:
-                        if ex.goods_nomenclature_item_id >= self.config["min_code"]:
+                    for exemplar_code in self.exemplar_codes:
+                        if exemplar_code >= self.config["min_code"] and exemplar_code < self.config["max_code"]:
                             print("Getting commodity {0} from MADB for {1} ({2})".format(
-                                ex.goods_nomenclature_item_id,
+                                exemplar_code,
                                 country["code"],
                                 country["prefix"]
                             ))
 
                             url = self.url_template.replace("{{country}}", country["code"])
-                            url = url.replace("{{id}}", ex.goods_nomenclature_item_id[0:6])
+                            url = url.replace("{{id}}", exemplar_code)
 
                             try:
                                 response = urlopen(url)
@@ -103,8 +125,7 @@ class CodeList(object):
                                 folder = os.path.join(folder, country["code"])
                                 if not os.path.isdir(folder):
                                     os.mkdir(folder)
-                                file = os.path.join(
-                                    folder, ex.goods_nomenclature_item_id[0:6]) + ".json"
+                                file = os.path.join(folder, exemplar_code) + ".json"
                                 f = open(file, "w+")
                                 json.dump(data_json, f, indent=4)
                                 f.close()
@@ -238,14 +259,6 @@ class CodeList(object):
 
                         for (k, v) in rules.items():
                             eu_roo = EuRoo(k, v, footnotes, country, subheading, self.config, self.headings_dict, self.heading_extents_dict)
-                    else:
-                        # Old style data files
-                        print("Getting classic {0} from MADB for {1} ({2})".format(subheading, country["code"], country["prefix"]))
-
-                        f = open(json_file_path)
-                        data_json = json.load(f)
-                        classic_roo = ClassicRoo(data_json, country, subheading, self.config)
-                        self.rule_sets += classic_roo.get_rule_sets()
 
             # if country["source"] != "product":
             #     self.apply_classic_rules_to_commodities()
@@ -408,62 +421,6 @@ class CodeList(object):
                     destination = source.replace("html/", "html_final/")
                     destination = destination.replace(files[0], filename)
                     shutil.copy(source, destination)
-
-    def get_codes(self):
-        self.get_exemplar_codes_filename()
-        self.exemplar_codes = []
-        d = datetime.now()
-        d2 = datetime.strftime(d, '%Y-%m-%d')
-        self.unique_subheadings = []
-        self.classifications = []
-        for i in range(0, 10):
-            chapter = str(i) + "%"
-            sql = """
-            select goods_nomenclature_sid, goods_nomenclature_item_id, producline_suffix, number_indents, leaf
-            from utils.goods_nomenclature_export_new('""" + chapter + """', '""" + d2 + """')
-            where validity_end_date is null
-            order by goods_nomenclature_item_id, producline_suffix;
-            """
-
-            print(
-                "Getting complete commodity code list for codes beginning with " + str(i))
-            d = Database()
-            rows = d.run_query(sql)
-            for row in rows:
-                classification = Classification(
-                    row[0],
-                    row[1],
-                    row[2],
-                    row[3],
-                    row[4]
-                )
-                if classification.leaf == 1:
-                    self.classifications.append(classification)
-                    self.unique_subheadings.append(
-                        classification.goods_nomenclature_item_id[0:6])
-
-        self.unique_subheadings = list(set(self.unique_subheadings))
-        self.unique_subheadings.sort()
-
-        start_index = 0
-
-        for subheading in self.unique_subheadings:
-            found = False
-            for i in range(start_index, len(self.classifications) - 1):
-                c = self.classifications[i]
-                if c.goods_nomenclature_item_id[0:6] == subheading:
-                    self.exemplar_codes.append(c)
-                    found = True
-                    a = 1
-                    start_index = i + 1
-                    break
-
-        f = open(self.filename, "w+")
-        for ex in self.exemplar_codes:
-            f.write(str(ex.goods_nomenclature_sid) + ",")
-            f.write(ex.goods_nomenclature_item_id + "\n")
-
-        f.close()
 
     def export_rule_sets_strategic(self, country):
         self.scheme_code = country["prefix"]

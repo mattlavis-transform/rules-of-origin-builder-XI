@@ -1,4 +1,4 @@
-from classes.code_list import CodeList
+from classes_product.code_list import CodeList
 
 
 code_list = CodeList()

@@ -1,22 +1,23 @@
 import os
 import json
 
-from classes.classic_roo import ClassicRoo
+from classes_product.product_roo import ProductRoo
+import classes.globals as g
 
 
-class ClassicRooFolder(object):
+class ProductRooFolder(object):
     def __init__(self, country_code, scheme_code):
         print("Processing data for {country_code} ({scheme_code})".format(country_code=country_code, scheme_code=scheme_code))
         self.country_code = country_code
         self.scheme_code = scheme_code
         self.rule_sets = []
+        g.rule_ids = []
 
     def get_json_path(self):
         self.json_path = os.getcwd()
         self.json_path = os.path.join(self.json_path, "resources", "json", self.country_code)
-        a = 1
 
-    def process_roo_classic(self):
+    def process_roo_product(self):
         self.make_export_folder()
         self.get_jason_strategic_filename()
         self.get_json_path()
@@ -25,28 +26,29 @@ class ClassicRooFolder(object):
         self.write_json_data()
 
     def process_files(self):
-        valid = ["85"]
-        valid = []
+        self.previous_json = {}
         for json_file in self.json_files:
-            if len(valid) == 0:
-                rule_sets = self.process_file(json_file)
-                if rule_sets is not None:
-                    self.rule_sets += rule_sets
-            else:
-                tmp = json_file.replace(".json", "").replace("chapter_", "")
-                if tmp in valid:
-                    rule_sets = self.process_file(json_file)
-                    if rule_sets is not None:
-                        self.rule_sets += rule_sets
+            # json_file = "290110.json"
+            self.process_file(json_file)
+            self.previous_json = self.data_json
+
+            if len(self.rule_sets) > 100000:
+                break
 
     def process_file(self, json_file):
         subheading = json_file.replace(".json", "")
         json_file_path = os.path.join(self.json_path, json_file)
         f = open(json_file_path)
-        data_json = json.load(f)
-        classic_roo = ClassicRoo(data_json, subheading, self.country_code, self.scheme_code)
-        self.rule_sets += classic_roo.rules_json
+        self.data_json = json.load(f)
         f.close()
+
+        if self.data_json != self.previous_json:
+            product_roo = ProductRoo(self.data_json, subheading, self.country_code, self.scheme_code)
+            self.rule_sets += product_roo.export
+            a = 1
+        else:
+            a = 1
+            pass
 
     def make_export_folder(self):
         self.json_strategic_folder = os.getcwd()

@@ -1,1 +1,2 @@
-id_rule = 16000000
+rule_ids = []
+heading_carry_over = ""
