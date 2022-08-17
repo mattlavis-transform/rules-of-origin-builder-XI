@@ -50,7 +50,7 @@ class ClassicRooRow(object):
         self.rule_text = self.rule_text.replace("\n ", "\n")
         self.rule_text = self.rule_text.replace("acrylic\n\nyarn", "acrylic yarn")
         self.rule_text = self.rule_text.replace("coating\n\nOnly", "coating. Only")
-        self.rule_text = self.rule_text.replace("and/or", "and / or")
+        self.rule_text = self.rule_text.replace("and/or", "and&nbsp;/&nbsp;or")
         self.rule_text = self.rule_text.replace("or\n", "or ")
         self.rule_text = self.rule_text.replace("\n\n\n", "\n\n")
         self.rule_text = self.rule_text.replace("9\ndecitex", "9 decitex")
