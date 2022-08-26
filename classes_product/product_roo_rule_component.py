@@ -1,11 +1,16 @@
 import re
+import os
 from markdownify import markdownify as md
+from dotenv import load_dotenv
+
 
 import classes.globals as g
 
 
 class ProductRooRuleComponent(object):
     def __init__(self, heading, description, text, idRuleComponent, type, process_no_component_rules=False):
+        load_dotenv('.env')
+        self.insert_hyperlinks = int(os.getenv('INSERT_HYPERLINKS'))
         self.heading = heading
         self.description = description
         self.text = text
@@ -30,7 +35,7 @@ class ProductRooRuleComponent(object):
         self.text = self.text.replace(" ,", ",")
         self.text = self.text.replace(" .", ".")
         self.text = self.text.replace("nonwoven", "non-woven")
-        self.text = self.text.replace("and/or", "*and&nbsp;/&nbsp;or*")
+        # self.text = self.text.replace("and/or", "*and&nbsp;/&nbsp;or*")
         self.text = self.text.replace(" %", "%")
         self.text = self.text.replace(" \u00b0", "\u00b0")
         self.text = re.sub(r'\[footnote=\"[A-Z0-9]+\"\]', "", self.text)
@@ -43,11 +48,13 @@ class ProductRooRuleComponent(object):
         self.text = self.text.rstrip(";")
 
         self.text = self.text.strip()
-        self.insert_hyperlinks()
+        self.insert_the_hyperlinks()
 
-    def insert_hyperlinks(self):
+    def insert_the_hyperlinks(self):
+        if self.insert_hyperlinks == 0:
+            return
         # Lower case the term Chapter in PSRs
-        self.text = re.sub("of Chapter", "of chapter", self.text)
+        self.text = re.sub("Chapter", "chapter", self.text)
 
         # Where there are lists of chapters ...
         self.text = re.sub(" chapters ([0-9]{1,2}) and ([0-9]{1,2})", " chapter \\1 and chapter \\2 ", self.text)
@@ -59,7 +66,7 @@ class ProductRooRuleComponent(object):
 
         # Insert hyperlinks to chapters: mid rule
         self.text = re.sub(" ([Cc])hapter ([1-9][0-9])([ ,])", " [\\1hapter \\2](/chapters/\\2)\\3", self.text)
-        self.text = re.sub(" ([Cc])hapter ([0-9])([ ,])", " [\\1hapter \\2](/chapters/0\\2)\\3", self.text)
+        self.text = re.sub(" ([Cc])hapter ([0-9])([ ,.])", " [\\1hapter \\2](/chapters/0\\2)\\3", self.text)
 
         # Insert hyperlinks to chapters: end of rule
         self.text = re.sub(" ([Cc])hapter ([1-9][0-9])$", " [\\1hapter \\2](/chapters/\\2)", self.text)

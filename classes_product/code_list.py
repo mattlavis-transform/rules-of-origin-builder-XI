@@ -10,6 +10,8 @@ import json
 from urllib.request import urlopen
 from dotenv import load_dotenv
 import logging
+import requests
+
 
 from classes.database import Database
 from classes_product.eu_roo import EuRoo
@@ -67,6 +69,7 @@ class CodeList(object):
     def strip_redundant_codes_from_simple_chapters(self):
         # simple_chapters = [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 97, 98]
         simple_chapters = [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 97, 98]
+        simple_chapters = []
         simple_chapter_exemplars = {}
         expurgated_codes = []
         for code in self.exemplar_codes:
@@ -115,8 +118,13 @@ class CodeList(object):
                             url = url.replace("{{id}}", exemplar_code)
 
                             try:
-                                response = urlopen(url)
-                                data_json = json.loads(response.read())
+                                headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+                                # response = urlopen(url)
+                                response = requests.get(url, headers=headers)
+                                txt = response.text
+
+                                # data_json = json.loads(response.read())
+                                data_json = json.loads(txt)
 
                                 # Save the raw data
                                 folder = os.getcwd()
@@ -131,6 +139,7 @@ class CodeList(object):
                                 f.close()
                             except Exception as e:
                                 logging.error("Exception occurred", exc_info=True)
+                                # sys.exit()
                 else:
                     # Classic lookup for Turkey, Kenya and GSP
                     for chapter in range(1, 99):
@@ -425,7 +434,7 @@ class CodeList(object):
     def export_rule_sets_strategic(self, country):
         self.scheme_code = country["prefix"]
         self.make_export_folder()
-        self.get_jason_strategic_filename()
+        self.get_json_strategic_filename()
         self.extract = {}
         self.extract["rule_sets"] = self.rule_sets
         f = open(self.json_strategic_filename, "w")
@@ -440,6 +449,6 @@ class CodeList(object):
             os.mkdir(self.json_strategic_folder)
         a = 1
 
-    def get_jason_strategic_filename(self):
+    def get_json_strategic_filename(self):
         a = 1
         self.json_strategic_filename = os.path.join(self.json_strategic_folder, self.scheme_code + ".json")

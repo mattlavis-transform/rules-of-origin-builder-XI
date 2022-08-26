@@ -40,7 +40,7 @@ class ProductRooFolder(object):
 
     def process_roo_product(self):
         self.make_export_folder()
-        self.get_jason_strategic_filename()
+        self.get_json_strategic_filename()
         self.get_json_path()
         self.get_json_files()
         self.process_files()
@@ -91,7 +91,7 @@ class ProductRooFolder(object):
         if not os.path.isdir(self.json_strategic_folder):
             os.mkdir(self.json_strategic_folder)
 
-    def get_jason_strategic_filename(self):
+    def get_json_strategic_filename(self):
         self.json_strategic_filename = os.path.join(self.json_strategic_folder, self.scheme_code + ".json")
 
     def write_json_data(self):
