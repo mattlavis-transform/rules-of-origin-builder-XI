@@ -6,6 +6,7 @@ def cleanse(s):
     return s2
 
 folder = os.path.join(os.getcwd(), "resources", "json_strategic")
+export_path = os.path.join(os.getcwd(), "resources", "roo_classes")
 files = os.listdir(folder)
 files2 = []
 for file in files:
@@ -34,20 +35,19 @@ for file in files2:
                 if rule_text != "":
                     my_texts[rule_text] = classes
 
-        # if index > 10:
-        #     break
-
-# Write all classes to a persisted file
+# Sort all files
 my_classes = list(set(my_classes))
 my_classes.sort()
-f = open("all_classes.txt", "w")
+
+# Write all classes to a persisted file
+filename = os.path.join(export_path, "all_classes.txt")
+f = open(filename, "w")
 for c in my_classes:
     f.write(c + "\n")
-
 f.close()
 
 # Write all rule to class associations to a persisted file
-
-f = open("all_rules.json", "w")
+filename = os.path.join(export_path, "all_rules.json")
+f = open(filename, "w")
 json.dump(my_texts, f, indent=4)
 f.close()
