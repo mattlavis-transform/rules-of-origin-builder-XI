@@ -24,6 +24,8 @@ class ClassicRooScheme(object):
         self.rules = self.data["rules"]
         self.cleanse_rules()
         html_version = ClassicRooSchemeHtml(self.subheading, self.rules, self.country_code, self.scheme_code)
+        if subheading == "chapter_16":
+            a = 1
         self.get_table_rows()
         self.duplicate_rows_for_non_consecutive_headings()
         self.get_heading_min_max()
@@ -57,6 +59,8 @@ class ClassicRooScheme(object):
                 table_cells = table_row.cssselect('td')
                 table_cell_count = len(table_cells)
                 if table_cell_count > 0:
+                    if self.subheading == "chapter_16" and row_index == 1:
+                        a = 1
                     new_row = ClassicRooRow(table_cells, row_index, max_number_of_columns_in_table, previous_row, self.subheading)
                     if new_row.valid:
                         self.roo_rows.append(new_row)

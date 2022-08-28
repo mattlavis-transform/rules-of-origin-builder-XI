@@ -28,8 +28,6 @@ class CodeList(object):
         self.config["specific_country"] = os.getenv('SPECIFIC_COUNTRY')
         self.config["specific_code"] = os.getenv('SPECIFIC_CODE')
         self.config["write_files"] = bool(os.getenv('WRITE_FILES'))
-        # self.config["save_to_db"] = bool(os.getenv('SAVE_TO_DB'))
-        # self.config["overwrite_db"] = bool(os.getenv('OVERWRITE_DB'))
 
         self.url_template = os.getenv('url_template')
         self.url_template_classic = os.getenv('url_template_classic')

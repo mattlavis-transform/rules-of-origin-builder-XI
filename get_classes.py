@@ -18,7 +18,6 @@ my_texts = {}
 
 for file in files2:
     json_file_path = os.path.join(folder, file)
-    print(file)
     f = open(json_file_path)
     data = json.load(f)
     rule_sets = data["rule_sets"]
