@@ -2,19 +2,36 @@
 
 ## Implementation steps
 
-- Create and activate a virtual environment, e.g.
+### Create and activate a virtual environment, e.g.
 
-  `python3 -m venv venv/`
-  `source venv/bin/activate`
-
-- Environment variable settings
-
-  - DATABASE_UK=postgres connection string
-  - MIN_CODE="0" -- Replace this with a valid 10-digit commodity code to restart processing from a specific code
-  - SPECIFIC_COUNTRY="ME" -- Overrides the country list to pull data from a specific country only
-  - SPECIFIC_CODE="1514111000" -- Overrides the commodity list to pull data for a single commodity only
-
+- `python3 -m venv venv/`
+- `source venv/bin/activate`
 - Install necessary Python modules via `pip3 install -r requirements.txt`
+
+### Environment variable settings
+
+#### Database
+- DATABASE_UK=postgres connection string
+- SAVE_TO_DB=[0|1]
+- OVERWRITE_DB=[0|1]
+
+#### Templates for accessing the raw data
+- url_template=path to JSON for template - modern
+- url_template_classic=path to JSON for template - legacy / classic
+
+#### Paths
+- commodity_code_folder=folder for commodity codes
+- EXPORT_PATH=string
+- EXPORT_PATH_UK=string
+- EXPORT_PATH_XI=string
+
+#### Configuration
+- CHAPTERS_TO_PROCESS=""
+- INSERT_HYPERLINKS=[0|1]
+- MIN_CODE=Replace this with a valid 10-digit commodity code to restart processing from a specific code
+- MAX_CODE=Replace this with a valid 10-digit commodity code to stop processing at a specific code
+- SPECIFIC_COUNTRY=Overrides the country list to pull data from a specific country only
+- SPECIFIC_CODE="Overrides the commodity list to pull data for a single commodity only
 
 ## Usage
 
