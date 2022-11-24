@@ -137,20 +137,34 @@ class ProductRoo(object):
                     my_type = my_type.strip()
                     if my_type != "":
                         component_types.append(my_type.strip())
+                # obj = {
+                #     "heading": rule.heading,
+                #     "chapter": rule.chapter,
+                #     "subdivision": rule.description,
+                #     "min": rule.min,
+                #     "max": rule.max,
+                #     "rules": [
+                #         {
+                #             "rule": component.text,
+                #             "class": component_types,
+                #             "operator": None,
+                #             "specific_processes": False,
+                #             "double_dash": False
+                #         }
+                #     ],
+                #     "valid": True
+                # }
                 obj = {
                     "heading": rule.heading,
                     "chapter": rule.chapter,
                     "subdivision": rule.description,
-                    "prefix": "",
                     "min": rule.min,
                     "max": rule.max,
                     "rules": [
                         {
                             "rule": component.text,
                             "class": component_types,
-                            "operator": None,
-                            "specific_processes": False,
-                            "double_dash": False
+                            "operator": None
                         }
                     ],
                     "valid": True

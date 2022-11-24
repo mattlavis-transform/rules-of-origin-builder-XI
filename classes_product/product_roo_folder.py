@@ -44,6 +44,7 @@ class ProductRooFolder(object):
         self.get_json_path()
         self.get_json_files()
         self.process_files()
+        self.deal_with_ex_codes()
         self.write_json_data()
         self.copy_to_destination("xi")
 
@@ -77,6 +78,8 @@ class ProductRooFolder(object):
         f.close()
 
         if self.data_json != self.previous_json:
+            if "Chapter 4" in subheading:
+                a = 1
             product_roo = ProductRoo(self.data_json, subheading, self.country_code, self.scheme_code, self.has_rules_decomposed)
             self.rule_sets += product_roo.export
             a = 1
@@ -93,6 +96,43 @@ class ProductRooFolder(object):
 
     def get_json_strategic_filename(self):
         self.json_strategic_filename = os.path.join(self.json_strategic_folder, self.scheme_code + ".json")
+
+    def deal_with_ex_codes(self):
+        for chapter in range(1, 98):
+            all_ex_codes = True
+            if chapter == 4:
+                a = 1
+            is_chapter_mentioned = False
+            rule_set_count = 0
+            if chapter != 77:
+                for rule_set in self.rule_sets:
+                    if rule_set["chapter"] == chapter:
+                        rule_set_count += 1
+                        # if not rule_set["is_ex_code"]:
+                        #     all_ex_codes = False
+                        # if rule_set["is_chapter"]:
+                        #     is_chapter_mentioned = True
+
+            if not all_ex_codes:  # If it is all ex-codes, then we can just leave it as-is
+                if rule_set_count > 1 and is_chapter_mentioned:
+                    # Check if there are any ex codes anywhere except for on the chapter itself
+                    # If there are not, then we can just replicate rules, ignoring the headings that are exceptions
+                    has_ex_code_headings = False
+                    for rule_set in self.rule_sets:
+                        if rule_set["chapter"] == chapter:
+                            if "chapter" not in rule_set["heading"].lower():
+                                if "ex" in rule_set["heading"]:
+                                    has_ex_code_headings = True
+                                    break
+
+                    if not has_ex_code_headings:
+                        # self.normalise_standard_chapter(chapter)
+                        print("normalise_standard_chapter")
+                        a = 1
+                    else:
+                        # self.normalise_complex_chapter(chapter)
+                        print("normalise_complex_chapter")
+                        a = 1
 
     def write_json_data(self):
         data = {

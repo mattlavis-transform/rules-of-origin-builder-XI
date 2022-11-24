@@ -17,11 +17,16 @@ class ClassicRooRule(object):
             self.rule_classes.append("WO")
 
     def as_dict(self):
+        # s = {
+        #     "rule": self.rule_text,
+        #     "class": self.rule_classes,
+        #     "operator": None,
+        #     "specific_processes": False,
+        #     "double_dash": False
+        # }
         s = {
             "rule": self.rule_text,
             "class": self.rule_classes,
-            "operator": None,
-            "specific_processes": False,
-            "double_dash": False
+            "operator": None
         }
         return s

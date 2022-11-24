@@ -259,7 +259,6 @@ class ClassicRooRow(object):
             "heading": self.heading_text,
             "chapter": self.chapter,
             "subdivision": self.subdivision_text,
-            "prefix": "",
             "min": self.key_min,
             "max": self.key_max,
             "rules": self.rules_json,
