@@ -1,0 +1,2911 @@
+{
+    "rule_sets": [
+        {
+            "heading": "Chapter 01",
+            "chapter": 1,
+            "subdivision": "Live animals",
+            "min": "0100000000",
+            "max": "0199999999",
+            "rules": [
+                {
+                    "rule": "All the animals of [chapter 1](/chapters/01) used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "Chapter 02",
+            "chapter": 2,
+            "subdivision": "Meat and edible meat offal",
+            "min": "0200000000",
+            "max": "0299999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials of [chapter 1](/chapters/01) and [chapter 2](/chapters/02)  used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 03",
+            "chapter": 3,
+            "subdivision": "Fish and crustaceans, molluscs and other aquatic invertebrates",
+            "min": "0300000000",
+            "max": "0399999999",
+            "rules": [
+                {
+                    "rule": "All the materials of [chapter 3](/chapters/03) used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "0304",
+            "chapter": 3,
+            "subdivision": "Fish fillets and other fish meat (whether or not minced), fresh, chilled or frozen",
+            "min": "0304000000",
+            "max": "0304999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of any materials of [chapter 3](/chapters/03) used does not exceed **15%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "0305",
+            "chapter": 3,
+            "subdivision": "Fish, dried, salted or in brine; smoked fish, whether or not cooked before or during the smoking process; flours, meals and pellets of fish, fit for human consumption",
+            "min": "0305000000",
+            "max": "0305999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of any materials of [chapter 3](/chapters/03) used does not exceed **15%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 0306",
+            "chapter": 3,
+            "subdivision": "Crustaceans, whether in shell or not, dried, salted or in brine; crustaceans, in shell, cooked by steaming or by boiling in water, whether or not chilled, frozen, dried, salted or in brine; flours, meals and pellets of crustaceans, fit for human consumption",
+            "min": "0306000000",
+            "max": "0306999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of any materials of [chapter 3](/chapters/03) used does not exceed **15%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 0306",
+            "chapter": 3,
+            "subdivision": "Crustaceans, whether in shell or not, dried, salted or in brine; crustaceans, in shell, cooked by steaming or by boiling in water, whether or not chilled, frozen, dried, salted or in brine; flours, meals and pellets of crustaceans, fit for human consumption",
+            "min": "0306000000",
+            "max": "0306999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of any materials of [chapter 3](/chapters/03) used does not exceed **15%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 0307",
+            "chapter": 3,
+            "subdivision": "Molluscs, whether in shell or not, dried, salted or in brine; aquatic invertebrates other than crustaceans and molluscs, dried, salted or in brine; flours, meals and pellets of crustaceans, fit for human consumption",
+            "min": "0307000000",
+            "max": "0307999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of any materials of [chapter 3](/chapters/03) used does not exceed **15%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 04",
+            "chapter": 4,
+            "subdivision": "Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",
+            "min": "0400000000",
+            "max": "0499999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials of [chapter 4](/chapters/04) used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "0403",
+            "chapter": 4,
+            "subdivision": "Buttermilk, curdled milk and cream, yoghurt, kephir and other fermented or acidified milk and cream, whether or not concentrated or containing added sugar or other sweetening matter or flavoured or containing added fruit, nuts or cocoa",
+            "min": "0403000000",
+            "max": "0403999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials of [chapter 4](/chapters/04) used must be wholly obtained; \n\n- any fruit juice (except those of pineapple, lime or grapefruit) of heading No 2009 used must already be originating; \n\n- the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "WO AND ORIGINATING AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "0403",
+            "chapter": 4,
+            "subdivision": "Buttermilk, curdled milk and cream, yoghurt, kephir and other fermented or acidified milk and cream, whether or not concentrated or containing added sugar or other sweetening matter or flavoured or containing added fruit, nuts or cocoa",
+            "min": "0403000000",
+            "max": "0403999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials of [chapter 4](/chapters/04) used must be wholly obtained; \n\n- any fruit juice (except those of pineapple, lime or grapefruit) of heading No 2009 used must already be originating; \n\n- the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "WO AND ORIGINATING AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 05",
+            "chapter": 5,
+            "subdivision": "Products of animal origin, not elsewhere specified or included",
+            "min": "0500000000",
+            "max": "0599999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials of [chapter 5](/chapters/05) used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 0502",
+            "chapter": 5,
+            "subdivision": "Prepared pigs', hogs' or boars' bristles and hair",
+            "min": "0502000000",
+            "max": "0502999999",
+            "rules": [
+                {
+                    "rule": "Cleaning, disinfecting, sorting and straightening of bristles and hair",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "Chapter 06",
+            "chapter": 6,
+            "subdivision": "Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",
+            "min": "0600000000",
+            "max": "0699999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials of [chapter 6](/chapters/06) used must be wholly obtained; \n\n- the value of all the materials used does not exceed **50%** of the ex-works price of the product",
+                    "class": [
+                        "WO AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "Chapter 07",
+            "chapter": 7,
+            "subdivision": "Edible vegetables and certain roots and tubers",
+            "min": "0700000000",
+            "max": "0799999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials of [chapter 7](/chapters/07) used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "Chapter 08",
+            "chapter": 8,
+            "subdivision": "Edible fruit and nuts; peel of citrus fruits or melons",
+            "min": "0800000000",
+            "max": "0899999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the fruit and nuts used must be wholly obtained; \n\n- the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the value of the ex-works price of the product",
+                    "class": [
+                        "WO AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "0901",
+            "chapter": 9,
+            "subdivision": "Coffee, whether or not roasted or decaffeinated; coffee husks and skins; coffee substitutes containing coffee in any proportion",
+            "min": "0901000000",
+            "max": "0901999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading",
+                    "class": [
+                        "AH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "0902",
+            "chapter": 9,
+            "subdivision": "Tea, whether or not flavoured",
+            "min": "0902000000",
+            "max": "0902999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading",
+                    "class": [
+                        "AH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 09",
+            "chapter": 9,
+            "subdivision": "Coffee, tea, mat\u00e9 and spices",
+            "min": "0900000000",
+            "max": "0999999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials of [chapter 9](/chapters/09) used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 0910",
+            "chapter": 9,
+            "subdivision": "Mixtures of spices",
+            "min": "0910000000",
+            "max": "0919999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading",
+                    "class": [
+                        "AH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "Chapter 10",
+            "chapter": 10,
+            "subdivision": "Cereals",
+            "min": "1000000000",
+            "max": "1099999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials of [chapter 10](/chapters/10) used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 11",
+            "chapter": 11,
+            "subdivision": "Products of the milling industry; malt; starches; inulin; wheat gluten",
+            "min": "1100000000",
+            "max": "1199999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the cereals, edible vegetables, roots and tubers of heading No 0714 or fruit used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 1106",
+            "chapter": 11,
+            "subdivision": "Flour, meal and powder of the dried, shelled leguminous vegetables of heading No 0713",
+            "min": "1106000000",
+            "max": "1106999999",
+            "rules": [
+                {
+                    "rule": "Drying and milling of leguminous vegetables of heading No 0708",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "Chapter 12",
+            "chapter": 12,
+            "subdivision": "Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit; industrial or medicinal plants; straw and fodder",
+            "min": "1200000000",
+            "max": "1299999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials of [chapter 12](/chapters/12) used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1301",
+            "chapter": 13,
+            "subdivision": "Lac; natural gums, resins, gum-resins and oleoresins (for example, balsams)",
+            "min": "1301000000",
+            "max": "1301999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of any materials of heading No 1301 used may not exceed **50%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1302",
+            "chapter": 13,
+            "subdivision": "[ul][bl] \u2013 Mucilages and thickeners, modified, derived from vegetable products [\\bl][\\ul]",
+            "min": "1302000000",
+            "max": "1302999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from non-modified mucilages and thickeners",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1302",
+            "chapter": 13,
+            "subdivision": "[ul][bl] \u2013 Other [\\bl][\\ul]",
+            "min": "1302000000",
+            "max": "1302999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of all the materials used does not exceed **50%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "Chapter 14",
+            "chapter": 14,
+            "subdivision": "Vegetable plaiting materials; vegetable products not elsewhere specified or included",
+            "min": "1400000000",
+            "max": "1499999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials of [chapter 14](/chapters/14) used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1501",
+            "chapter": 15,
+            "subdivision": "[ul][bl] \u2013 Fats from bones or waste [\\bl][\\ul]",
+            "min": "1501000000",
+            "max": "1501999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading except those of heading Nos 0203, 0206 or [heading 0207](/headings/0207)  or bones of heading No 0506",
+                    "class": [
+                        "AH EXCEPT"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1501",
+            "chapter": 15,
+            "subdivision": "[ul][bl] \u2013 Other [\\bl][\\ul]",
+            "min": "1501000000",
+            "max": "1501999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from meat or edible offal of swine of heading No 0203 or [heading 0206](/headings/0206)  or of meat and edible offal of poultry of heading No 0207",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1502",
+            "chapter": 15,
+            "subdivision": "[ul][bl] \u2013 Fats from bones or waste [\\bl][\\ul]",
+            "min": "1502000000",
+            "max": "1502999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading except those of heading Nos 0201, 0202, 0204 or [heading 0206](/headings/0206)  or bones of heading No 0506",
+                    "class": [
+                        "AH EXCEPT"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1502",
+            "chapter": 15,
+            "subdivision": "[ul][bl] \u2013 Other [\\bl][\\ul]",
+            "min": "1502000000",
+            "max": "1502999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials of [chapter 2](/chapters/02) used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 15",
+            "chapter": 15,
+            "subdivision": "Animal or vegetable fats and oils and their cleavage products; prepared edible fats; animals or vegetable waxes",
+            "min": "1500000000",
+            "max": "1599999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1504",
+            "chapter": 15,
+            "subdivision": "[ul][bl] \u2013 Solid fractions [\\bl][\\ul]",
+            "min": "1504000000",
+            "max": "1504999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading including other materials of heading No 1504",
+                    "class": [
+                        "AH INCLUDING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1504",
+            "chapter": 15,
+            "subdivision": "[ul][bl] \u2013 Other [\\bl][\\ul]",
+            "min": "1504000000",
+            "max": "1504999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials of [chapter 2](/chapters/02) and [chapter 3](/chapters/03)  used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1506",
+            "chapter": 15,
+            "subdivision": "[ul][bl] \u2013 Solid fractions [\\bl][\\ul]",
+            "min": "1506000000",
+            "max": "1506999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading including other materials of heading No 1506",
+                    "class": [
+                        "AH INCLUDING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1506",
+            "chapter": 15,
+            "subdivision": "[ul][bl] \u2013 Other [\\bl][\\ul]",
+            "min": "1506000000",
+            "max": "1506999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials of [chapter 2](/chapters/02) used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1507 - 1515",
+            "chapter": 15,
+            "subdivision": "[ul][bl] \u2013 Soya, ground nut, palm, copra, palm kernel, babassu, tung and oiticica oil, myrtle wax and Japan wax, fractions of jojoba oil and oils for technical or industrial uses other than the manufacture of foodstuffs for human consumption [\\bl][\\ul]",
+            "min": "1507000000",
+            "max": "1515999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1507 - 1515",
+            "chapter": 15,
+            "subdivision": "[ul][bl] \u2013 Solid fractions, that of jojoba oil [\\bl][\\ul]",
+            "min": "1507000000",
+            "max": "1515999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from other materials of heading Nos 1507 to 1515",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1507 - 1515",
+            "chapter": 15,
+            "subdivision": "[ul][bl] \u2013 Other [\\bl][\\ul]",
+            "min": "1507000000",
+            "max": "1515999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the vegetable materials used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1516",
+            "chapter": 15,
+            "subdivision": "Animal or vegetable fats and oils and their fractions, partly or wholly hydrogenated, inter-esterified, re-esterified or elaidinized, whether or not refined, but not further prepared",
+            "min": "1516000000",
+            "max": "1516999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials of [chapter 2](/chapters/02) used must be wholly obtained; \n\n- all the vegetable materials used must be wholly obtained. However, materials of heading Nos 1507, 1508, 1511 and 1513 may be used",
+                    "class": [
+                        "WO AND (WO TOLERANCE MAY BE USED)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1517",
+            "chapter": 15,
+            "subdivision": "Margarine; edible mixtures or preparations of animal or vegetable fats or oils or of fractions of different fats or oils of this Chapter, other than edible fats or oils or their fractions of heading No 1516",
+            "min": "1517000000",
+            "max": "1517999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials of [chapter 2](/chapters/02) and [chapter 4](/chapters/04)  used must be wholly obtained; \n\n- all the vegetable materials used must be wholly obtained. However, materials of heading Nos 1507, 1508, 1511 and 1513 may be used",
+                    "class": [
+                        "WO AND (WO TOLERANCE MAY BE USED)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 16",
+            "chapter": 16,
+            "subdivision": "Preparations of meat, of fish or of crustaceans, molluscs or other aquatic invertebrates",
+            "min": "1600000000",
+            "max": "1699999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from animals of [chapter 1](/chapters/01)",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 16",
+            "chapter": 16,
+            "subdivision": "Preparations of meat, of fish or of crustaceans, molluscs or other aquatic invertebrates",
+            "min": "1600000000",
+            "max": "1699999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from animals of [chapter 1](/chapters/01)",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1604",
+            "chapter": 16,
+            "subdivision": "Prepared or preserved fish; caviar and caviar substitutes prepared from fish eggs;[br]Crustaceans, molluscs and other aquatic invertebrates, prepared or preserved[br]",
+            "min": "1604000000",
+            "max": "1604999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of any materials of [chapter 3](/chapters/03) used does not exceed **15%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1605",
+            "chapter": 16,
+            "subdivision": "Prepared or preserved fish; caviar and caviar substitutes prepared from fish eggs;[br]Crustaceans, molluscs and other aquatic invertebrates, prepared or preserved[br]",
+            "min": "1605000000",
+            "max": "1605999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of any materials of [chapter 3](/chapters/03) used does not exceed **15%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 17",
+            "chapter": 17,
+            "subdivision": "Sugars and sugar confectionery",
+            "min": "1700000000",
+            "max": "1799999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 17",
+            "chapter": 17,
+            "subdivision": "Sugars and sugar confectionery",
+            "min": "1700000000",
+            "max": "1799999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 1701",
+            "chapter": 17,
+            "subdivision": "Cane or beet sugar and chemically pure sucrose, in solid form, flavoured or coloured",
+            "min": "1701000000",
+            "max": "1701999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1702",
+            "chapter": 17,
+            "subdivision": "[ul][bl] \u2013 Chemically pure maltose and fructose [\\bl][\\ul]",
+            "min": "1702000000",
+            "max": "1702999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading including other materials of heading No 1702",
+                    "class": [
+                        "AH INCLUDING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1702",
+            "chapter": 17,
+            "subdivision": "[ul][bl] \u2013 Other sugars in solid form, flavoured or coloured [\\bl][\\ul]",
+            "min": "1702000000",
+            "max": "1702999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1702",
+            "chapter": 17,
+            "subdivision": "[ul][bl] \u2013 Other [\\bl][\\ul]",
+            "min": "1702000000",
+            "max": "1702999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used must already be originating",
+                    "class": [
+                        "ORIGINATING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 1703",
+            "chapter": 17,
+            "subdivision": "Molasses resulting from the extraction or refining of sugar, flavoured or coloured",
+            "min": "1703000000",
+            "max": "1703999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1704",
+            "chapter": 17,
+            "subdivision": "Sugar confectionery (including white chocolate), not containing cocoa",
+            "min": "1704000000",
+            "max": "1704999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials used are classified within a heading other than that of the product; \n\n- the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "CTH AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "Chapter 18",
+            "chapter": 18,
+            "subdivision": "Cocoa and cocoa preparations",
+            "min": "1800000000",
+            "max": "1899999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials used are classified within a heading other than that of the product; \n\n- the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "CTH AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1901",
+            "chapter": 19,
+            "subdivision": "[ul][bl] \u2013 Malt extract [\\bl][\\ul]",
+            "min": "1901000000",
+            "max": "1901999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from cereals of [chapter 10](/chapters/10)",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1901",
+            "chapter": 19,
+            "subdivision": "[ul][bl] \u2013 Other [\\bl][\\ul]",
+            "min": "1901000000",
+            "max": "1901999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials used are classified within a heading other than that of the product; \n\n- the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "CTH AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1902",
+            "chapter": 19,
+            "subdivision": "[ul][bl] \u2013 Containing 20% or less by weight of meat, meat offal, fish, crustaceans or molluscs [\\bl][\\ul]",
+            "min": "1902000000",
+            "max": "1902999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the cereals and derivatives (except durum wheat and its derivatives) used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1902",
+            "chapter": 19,
+            "subdivision": "[ul][bl] \u2013 Containing more than 20% by weight of meat, meat offal, fish, crustaceans or molluscs [\\bl][\\ul]",
+            "min": "1902000000",
+            "max": "1902999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all cereals and derivatives (except durum wheat and its derivatives) used must be wholly obtained; \n\n- all the materials of [chapter 2](/chapters/02) and [chapter 3](/chapters/03)  used must be wholly obtained",
+                    "class": [
+                        "WO AND WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1903",
+            "chapter": 19,
+            "subdivision": "Tapioca and substitutes therefor prepared from starch, in the form of flakes, grains, pearls, siftings or in similar forms",
+            "min": "1903000000",
+            "max": "1903999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading except potato starch of heading No 1108",
+                    "class": [
+                        "AH EXCEPT"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1904",
+            "chapter": 19,
+            "subdivision": "Prepared foods obtained by the swelling or roasting of cereals or cereal products (for example, corn flakes); cereals (other than maize (corn)) in grain form or in the form of flakes or other worked grains (except flour and meal), pre-cooked, or otherwise prepared, not elsewhere specified or included",
+            "min": "1904000000",
+            "max": "1904999999",
+            "rules": [
+                {
+                    "rule": "Manufacture:\n\n- from materials not classified within heading No 1806 ; \n\n- in which all the cereals and flour (except durum wheat and its derivates and Zea indurata maize) used must be wholly obtained, \n\n- in which the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "AH EXCEPT AND WO AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "1905",
+            "chapter": 19,
+            "subdivision": "Bread, pastry, cakes, biscuits and other bakers' wares, whether or not containing cocoa; communion wafers, empty cachets of a kind suitable for pharmaceutical use, sealing wafers, rice paper and similar products",
+            "min": "1905000000",
+            "max": "1905999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading except those of [chapter 11](/chapters/11)",
+                    "class": [
+                        "AH EXCEPT"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 20",
+            "chapter": 20,
+            "subdivision": "Preparations of vegetables, fruit, nuts or other parts of plants",
+            "min": "2000000000",
+            "max": "2099999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the fruit, nuts or vegetables used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 20",
+            "chapter": 20,
+            "subdivision": "Preparations of vegetables, fruit, nuts or other parts of plants",
+            "min": "2000000000",
+            "max": "2099999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the fruit, nuts or vegetables used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2001",
+            "chapter": 20,
+            "subdivision": "Yams, sweet potatoes and similar edible parts of plants containing 5% or more by weight of starch, prepared or preserved by vinegar or acetic acid",
+            "min": "2001000000",
+            "max": "2001999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2004",
+            "chapter": 20,
+            "subdivision": "Potatoes in the form of flour, meal or flakes, prepared or preserved otherwise than by vinegar or acetic acid",
+            "min": "2004000000",
+            "max": "2004999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2005",
+            "chapter": 20,
+            "subdivision": "Potatoes in the form of flour, meal or flakes, prepared or preserved otherwise than by vinegar or acetic acid",
+            "min": "2005000000",
+            "max": "2005999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2006",
+            "chapter": 20,
+            "subdivision": "Vegetables, fruit, nuts, fruit-peel and other parts of plants, preserved by sugar (drained, glac\u00e9 or crystallized)",
+            "min": "2006000000",
+            "max": "2006999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2007",
+            "chapter": 20,
+            "subdivision": "Jams, fruit jellies, marmalades, fruit or nut pur\u00e9e and fruit or nut pastes, being cooked preparations, whether or not containing added sugar or other sweetening matter",
+            "min": "2007000000",
+            "max": "2007999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials used are classified within a heading other than that of the product; \n\n- the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "CTH AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2008",
+            "chapter": 20,
+            "subdivision": "[ul][bl] \u2013 Nuts, not containing added sugar or spirit [\\bl][\\ul]",
+            "min": "2008000000",
+            "max": "2008999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of the originating nuts and oil seeds of heading Nos 0801, 0802 and 1202 to 1207 used exceeds **60%** of the ex-works price of the product",
+                    "class": [
+                        "MINOM_VALUE"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2008",
+            "chapter": 20,
+            "subdivision": "[ul][bl] \u2013 Peanut butter; mixtures based on cereals; palm hearts; maize (corn) [\\bl][\\ul]",
+            "min": "2008000000",
+            "max": "2008999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2008",
+            "chapter": 20,
+            "subdivision": "[ul][bl] \u2013 Other fruit and nuts cooked otherwise than by steaming or boiling in water, not containing added sugar, frozen [\\bl][\\ul]",
+            "min": "2008000000",
+            "max": "2008999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials used are classified within a heading other than that of the product; \n\n- the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "CTH AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2009",
+            "chapter": 20,
+            "subdivision": "Fruit juices (including grape must) and vegetable juices, unfermented and not containing added spirit, whether or not containing added sugar or other sweetening matter",
+            "min": "2009000000",
+            "max": "2009999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials used are classified within a heading other than that of the product; \n\n- the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "CTH AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2101",
+            "chapter": 21,
+            "subdivision": "Extracts, essences and concentrates, of coffee, tea or mat\u00e9 and preparations with a basis of these products or with a basis of coffee, tea or mat\u00e9; roasted chicory and other roasted coffee substitutes, and extracts, essences and concentrates thereof",
+            "min": "2101000000",
+            "max": "2101999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials used are classified within a heading other than that of the product; \n\n- all the chicory used must be wholly obtained",
+                    "class": [
+                        "CTH AND WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 21",
+            "chapter": 21,
+            "subdivision": "Miscellaneous edible preparations",
+            "min": "2100000000",
+            "max": "2199999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2103",
+            "chapter": 21,
+            "subdivision": "[ul][bl] \u2013 Sauces and preparations therefor; mixed condiments and mixed seasonings [\\bl][\\ul]",
+            "min": "2103000000",
+            "max": "2103999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product. However, mustard flour or meal or prepared mustard may be used",
+                    "class": [
+                        "CTH TOLERANCE MAY BE USED"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2103",
+            "chapter": 21,
+            "subdivision": "[ul][bl] \u2013 Mustard flour and meal and prepared mustard [\\bl][\\ul]",
+            "min": "2103000000",
+            "max": "2103999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading",
+                    "class": [
+                        "AH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2104",
+            "chapter": 21,
+            "subdivision": "Soups and broths and preparations therefor",
+            "min": "2104000000",
+            "max": "2104999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading except prepared or preserved vegetables of heading Nos 2002 to 2005",
+                    "class": [
+                        "AH EXCEPT"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2106",
+            "chapter": 21,
+            "subdivision": "Food preparations not elsewhere specified or included",
+            "min": "2106000000",
+            "max": "2106999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials used are classified within a heading other than that of the product; \n\n- the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product",
+                    "class": [
+                        "CTH AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 22",
+            "chapter": 22,
+            "subdivision": "Beverages, spirits and vinegar",
+            "min": "2200000000",
+            "max": "2299999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials used are classified within a heading other than that of the product; \n\n- all the grapes or any material derived from grapes used must be wholly obtained",
+                    "class": [
+                        "CTH AND WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2202",
+            "chapter": 22,
+            "subdivision": "Waters, including mineral waters and aerated waters, containing added sugar or other sweetening matter or flavoured, and other non-alcoholic beverages, not including fruit or vegetable juices of heading No 2009",
+            "min": "2202000000",
+            "max": "2202999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials used are classified within a heading other than that of the product; \n\n- the value of any materials of [chapter 17](/chapters/17) used does not exceed **30%** of the ex-works price of the product; \n\n- any fruit juice used (except for pineapple, lime and grapefruit juices) must already be originating",
+                    "class": [
+                        "CTH AND MAXNOM AND ORIGINATING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2207",
+            "chapter": 22,
+            "subdivision": "Undenatured ethyl alcohol of an alcoholic strength by volume of 80% vol or higher; ethyl alcohol and other spirits, denatured, of any strength.",
+            "min": "2207000000",
+            "max": "2207999999",
+            "rules": [
+                {
+                    "rule": "Manufacture:\n\n- using materials not classified in headings 2207 or [heading 2208](/headings/2208) , \n\n- in which all the grapes or any materials derived from grapes used must be wholly obtained or if all the other materials used are already originating, arrack may be used up to a limit of **5%** by volume",
+                    "class": [
+                        "AH EXCEPT AND (WO TOLERANCE MAY BE USED)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2208",
+            "chapter": 22,
+            "subdivision": "Undenatured ethyl alcohol of an alcoholic strength by volume of less than 80% vol; spirits, liqueurs and other spirituous beverages",
+            "min": "2208000000",
+            "max": "2208999999",
+            "rules": [
+                {
+                    "rule": "Manufacture:\n\n- from materials not classified within heading Nos 2207 or [heading 2208](/headings/2208) , \n\n- in which all the grapes or any material derived from grapes used must be wholly obtained or if all the other materials used are already originating, arrack may be used up to a limit of **5%** by volume",
+                    "class": [
+                        "AH EXCEPT AND (WO TOLERANCE MAY BE USED)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 23",
+            "chapter": 23,
+            "subdivision": "Residues and waste from the food industries; prepared animal fodder",
+            "min": "2300000000",
+            "max": "2399999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 23",
+            "chapter": 23,
+            "subdivision": "Residues and waste from the food industries; prepared animal fodder",
+            "min": "2300000000",
+            "max": "2399999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2301",
+            "chapter": 23,
+            "subdivision": "Whale meal; flours, meals and pellets of fish or of crustaceans, molluscs or other aquatic invertebrates, unfit for human consumption",
+            "min": "2301000000",
+            "max": "2301999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials of [chapter 2](/chapters/02) and [chapter 3](/chapters/03)  used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2303",
+            "chapter": 23,
+            "subdivision": "Residues from the manufacture of starch from maize (excluding concentrated steeping liquors), of a protein content, calculated on the dry product, exceeding 40% by weight",
+            "min": "2303000000",
+            "max": "2303999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the maize used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2306",
+            "chapter": 23,
+            "subdivision": "Oil cake and other solid residues resulting from the extraction of olive oil, containing more than 3% of olive oil",
+            "min": "2306000000",
+            "max": "2306999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the olives used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2309",
+            "chapter": 23,
+            "subdivision": "Preparations of a kind used in animal feeding",
+            "min": "2309000000",
+            "max": "2309999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the cereals, sugar or molasses, meat or milk used must already be originating; \n\n- all the materials of [chapter 3](/chapters/03) used must be wholly obtained",
+                    "class": [
+                        "ORIGINATING AND WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 24",
+            "chapter": 24,
+            "subdivision": "Tobacco and manufactured tobacco substitutes",
+            "min": "2400000000",
+            "max": "2499999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials of [chapter 24](/chapters/24) used must be wholly obtained",
+                    "class": [
+                        "WO"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2402",
+            "chapter": 24,
+            "subdivision": "Cigars, cheroots, cigarillos and cigarettes, of tobacco or of tobacco substitutes",
+            "min": "2402000000",
+            "max": "2402999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which at least **70%** by weight of the unmanufactured tobacco or tobacco refuse of heading No 2401 used must already be originating",
+                    "class": [
+                        "ORIGINATING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2403",
+            "chapter": 24,
+            "subdivision": "Smoking tobacco",
+            "min": "2403000000",
+            "max": "2403999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which at least **70%** by weight of the unmanufactured tobacco or tobacco refuse of heading No 2401 used must already be originating",
+                    "class": [
+                        "ORIGINATING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 25",
+            "chapter": 25,
+            "subdivision": "Salt; sulphur; earths and stone; plastering materials, lime and cement",
+            "min": "2500000000",
+            "max": "2599999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2504",
+            "chapter": 25,
+            "subdivision": "Natural crystalline graphite, with enriched carbon content, purified and ground",
+            "min": "2504000000",
+            "max": "2504999999",
+            "rules": [
+                {
+                    "rule": "Enriching of the carbon content, purifying and grinding of crude crystalline graphite",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2515",
+            "chapter": 25,
+            "subdivision": "Marble, merely cut, by sawing or otherwise, into blocks or slabs of a rectangular (including square) shape, of a thickness not exceeding 25 cm",
+            "min": "2515000000",
+            "max": "2515999999",
+            "rules": [
+                {
+                    "rule": "Cutting, by sawing or otherwise, of marble (even if already sawn) of a thickness exceeding 25 cm",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2516",
+            "chapter": 25,
+            "subdivision": "Granite, porphyry, basalt, sandstone and other monumental and building stone, merely cut, by sawing or otherwise, into blocks or slabs of a rectangular (including square) shape, of a thickness not exceeding 25 cm",
+            "min": "2516000000",
+            "max": "2516999999",
+            "rules": [
+                {
+                    "rule": "Cutting, by sawing or otherwise, of stone (even if already sawn) of a thickness exceeding 25 cm",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2518",
+            "chapter": 25,
+            "subdivision": "Calcined dolomite",
+            "min": "2518000000",
+            "max": "2518999999",
+            "rules": [
+                {
+                    "rule": "Calcination of dolomite not calcined",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2519",
+            "chapter": 25,
+            "subdivision": "Crushed natural magnesium carbonate (magnesite), in hermetically-sealed containers, and magnesium oxide, whether or not pure, other than fused magnesia or dead-burned (sintered) magnesia",
+            "min": "2519000000",
+            "max": "2519999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product. However, natural magnesium carbonate (magnesite) may be used",
+                    "class": [
+                        "CTH TOLERANCE MAY BE USED"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2520",
+            "chapter": 25,
+            "subdivision": "Plasters specially prepared for dentistry",
+            "min": "2520000000",
+            "max": "2529999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of all the materials used does not exceed **50%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2524",
+            "chapter": 25,
+            "subdivision": "Natural asbestos fibres",
+            "min": "2524000000",
+            "max": "2524999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from asbestos concentrate",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2525",
+            "chapter": 25,
+            "subdivision": "Mica powder",
+            "min": "2525000000",
+            "max": "2525999999",
+            "rules": [
+                {
+                    "rule": "Grinding of mica or mica waste",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2530",
+            "chapter": 25,
+            "subdivision": "Earth colours, calcined or powdered",
+            "min": "2530000000",
+            "max": "2539999999",
+            "rules": [
+                {
+                    "rule": "Calcination or grinding of earth colours",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "Chapter 26",
+            "chapter": 26,
+            "subdivision": "Ores, slag and ash",
+            "min": "2600000000",
+            "max": "2699999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 27",
+            "chapter": 27,
+            "subdivision": "Mineral fuels, mineral oils and products of their distillation; bituminous substances; mineral waxes",
+            "min": "2700000000",
+            "max": "2799999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2707",
+            "chapter": 27,
+            "subdivision": "Oils in which the weight of the aromatic constituents exceeds that of the non-aromatic constituents, being oils similar to mineral oils obtained by distillation of high temperature coal tar, of which more than 65% by volume distils at a temperature of up to 250&nbsp;\u00b0C (including mixtures of petroleum spirit and benzole), for use as power or heating fuels",
+            "min": "2707000000",
+            "max": "2707999999",
+            "rules": [
+                {
+                    "rule": "Operations of refining and/or one or more specific process(es)",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2709",
+            "chapter": 27,
+            "subdivision": "Crude oils obtained from bituminous minerals",
+            "min": "2709000000",
+            "max": "2709999999",
+            "rules": [
+                {
+                    "rule": "Destructive distillation of bituminous materials",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2710",
+            "chapter": 27,
+            "subdivision": "Petroleum oils and oils obtained from bituminous materials, other than crude; preparations not elsewhere specified or included, containing by weight 70% or more of petroleum oils or of oils obtained from bituminous materials, these oils being the basic constituents of the preparations",
+            "min": "2710000000",
+            "max": "2719999999",
+            "rules": [
+                {
+                    "rule": "Operations of refining and/or one or more specific process(es)",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2711",
+            "chapter": 27,
+            "subdivision": "Petroleum gases and other gaseous hydrocarbons",
+            "min": "2711000000",
+            "max": "2711999999",
+            "rules": [
+                {
+                    "rule": "Operations of refining and/or one or more specific process(es)",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2712",
+            "chapter": 27,
+            "subdivision": "Petroleum jelly; paraffin wax, microcrystalline petroleum wax, slack wax, ozokerite, lignite wax, peat wax, other mineral waxes and similar products obtained by synthesis or by other processes, whether or not coloured",
+            "min": "2712000000",
+            "max": "2712999999",
+            "rules": [
+                {
+                    "rule": "Operations of refining and/or one or more specific process(es)",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2713",
+            "chapter": 27,
+            "subdivision": "Petroleum coke, petroleum bitumen and other residues of petroleum oils or of oils obtained from bituminous materials",
+            "min": "2713000000",
+            "max": "2713999999",
+            "rules": [
+                {
+                    "rule": "Operations of refining and/or one or more specific process(es)",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2714",
+            "chapter": 27,
+            "subdivision": "Bitumen and asphalt, natural; bituminous or oil shale and tar sands; asphaltites and asphaltic rocks",
+            "min": "2714000000",
+            "max": "2714999999",
+            "rules": [
+                {
+                    "rule": "Operations of refining and/or one or more specific process(es)",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2715",
+            "chapter": 27,
+            "subdivision": "Bituminous mixtures based on natural asphalt, on natural bitumen, on petroleum bitumen, on mineral tar or on mineral tar pitch (for example, bituminous mastics, cut-backs)",
+            "min": "2715000000",
+            "max": "2715999999",
+            "rules": [
+                {
+                    "rule": "Operations of refining and/or one or more specific process(es)",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 28",
+            "chapter": 28,
+            "subdivision": "Inorganic chemicals; organic or inorganic compounds of precious metals, of rare-earth metals, of radioactive elements or of isotopes",
+            "min": "2800000000",
+            "max": "2899999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product. However, materials classified within the same heading may be used provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "CTH TOLERANCE (MAY BE USED RESTRICTION MAXNOM)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2805",
+            "chapter": 28,
+            "subdivision": "'Mischmetall'",
+            "min": "2805000000",
+            "max": "2805999999",
+            "rules": [
+                {
+                    "rule": "Manufacture by electrolytic or thermal treatment in which the value of all the materials used does not exceed **50%** of the ex-works price of the product",
+                    "class": [
+                        "PROCESSING RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2811",
+            "chapter": 28,
+            "subdivision": "Sulphur trioxide",
+            "min": "2811000000",
+            "max": "2811999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from sulphur dioxide",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2833",
+            "chapter": 28,
+            "subdivision": "Aluminium sulphate",
+            "min": "2833000000",
+            "max": "2833999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which the value of all the materials used does not exceed **50%** of the ex-works price of the product",
+                    "class": [
+                        "MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2840",
+            "chapter": 28,
+            "subdivision": "Sodium perborate",
+            "min": "2840000000",
+            "max": "2849999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from disodium tetraborate pentahydrate",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 29",
+            "chapter": 29,
+            "subdivision": "Organic chemicals",
+            "min": "2900000000",
+            "max": "2999999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product. However, materials classified within the same heading may be used provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "CTH TOLERANCE (MAY BE USED RESTRICTION MAXNOM)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 29",
+            "chapter": 29,
+            "subdivision": "Organic chemicals",
+            "min": "2900000000",
+            "max": "2999999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product. However, materials classified within the same heading may be used provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "CTH TOLERANCE (MAY BE USED RESTRICTION MAXNOM)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2901",
+            "chapter": 29,
+            "subdivision": "Acyclic hydrocarbons for use as power or heating fuels",
+            "min": "2901000000",
+            "max": "2901999999",
+            "rules": [
+                {
+                    "rule": "Operations of refining and/or one or more specific process(es)",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2902",
+            "chapter": 29,
+            "subdivision": "Cyclanes and cyclenes (other than azulenes), benzene, toluene, xylenes, for use as power or heating fuels",
+            "min": "2902000000",
+            "max": "2902999999",
+            "rules": [
+                {
+                    "rule": "Operations of refining and/or one or more specific process(es)",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2905",
+            "chapter": 29,
+            "subdivision": "Metal alcoholates of alcohols of this heading and of ethanol",
+            "min": "2905000000",
+            "max": "2905999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading, including other materials of heading No 2905. However, metal alcoholates of this heading may be used, provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH INCLUDING TOLERANCE (MAY BE USED RESTRICTION MAXNOM)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2915",
+            "chapter": 29,
+            "subdivision": "Saturated acyclic monocarboxylic acids and their anhydrides, halides, peroxides and peroxyacids; their halogenated, sulphonated, nitrated or nitrosated derivatives",
+            "min": "2915000000",
+            "max": "2915999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading. However, the value of all the materials of headings Nos 2915 and 2916 used may not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2932",
+            "chapter": 29,
+            "subdivision": "[ul][bl] \u2013 Internal ethers and their halogenated, sulphonated, nitrated or nitrosated derivatives [\\bl][\\ul]",
+            "min": "2932000000",
+            "max": "2932999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading. However, the value of all the materials of heading No 2909 used may not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 2932",
+            "chapter": 29,
+            "subdivision": "[ul][bl] \u2013 Cyclic acetals and internal hemiacetals and their halogenated, sulphonated, nitrated or nitrosated derivatives [\\bl][\\ul]",
+            "min": "2932000000",
+            "max": "2932999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading",
+                    "class": [
+                        "AH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2933",
+            "chapter": 29,
+            "subdivision": "Heterocyclic compounds with nitrogen hetero-atom(s) only",
+            "min": "2933000000",
+            "max": "2933999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading. However, the value of all the materials of headings Nos 2932 and 2933 used may not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "2934",
+            "chapter": 29,
+            "subdivision": "Nucleic acids and their salts; other heterocyclic compounds",
+            "min": "2934000000",
+            "max": "2934999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading. However, the value of all the materials of headings Nos 2932, 2933 and 2934 used may not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 30",
+            "chapter": 30,
+            "subdivision": "Pharmaceutical products",
+            "min": "3000000000",
+            "max": "3099999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product. However, materials classified within the same heading may be used provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "CTH TOLERANCE (MAY BE USED RESTRICTION MAXNOM)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3002",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 Products consisting of two or more constituents which have been mixed together for therapeutic or prophylactic uses or unmixed products for these uses, put up in measured doses or in forms or packings for retail sale [\\bl][\\ul]",
+            "min": "3002000000",
+            "max": "3002999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading, including other materials of heading No 3002. The materials of this description may also be used, provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH INCLUDING RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3002",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 Products consisting of two or more constituents which have been mixed together for therapeutic or prophylactic uses or unmixed products for these uses, put up in measured doses or in forms or packings for retail sale [\\bl][\\ul]",
+            "min": "3002000000",
+            "max": "3002999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading, including other materials of heading No 3002. The materials of this description may also be used, provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH INCLUDING RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3002",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 \u2013 human blood [\\bl][\\ul]",
+            "min": "3002000000",
+            "max": "3002999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading, including other materials of heading No 3002. The materials of this description may also be used, provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH INCLUDING RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3002",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 \u2013 human blood [\\bl][\\ul]",
+            "min": "3002000000",
+            "max": "3002999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading, including other materials of heading No 3002. The materials of this description may also be used, provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH INCLUDING RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3002",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 \u2013 animal blood prepared for therapeutic or prophylactic uses [\\bl][\\ul]",
+            "min": "3002000000",
+            "max": "3002999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading, including other materials of heading No 3002. The materials of this description may also be used, provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH INCLUDING RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3002",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 \u2013 animal blood prepared for therapeutic or prophylactic uses [\\bl][\\ul]",
+            "min": "3002000000",
+            "max": "3002999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading, including other materials of heading No 3002. The materials of this description may also be used, provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH INCLUDING RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3002",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 \u2013 blood fractions other than antisera, haemoglobin, blood globulins and serum globulins [\\bl][\\ul]",
+            "min": "3002000000",
+            "max": "3002999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading, including other materials of heading No 3002. The materials of this description may also be used, provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH INCLUDING RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3002",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 \u2013 blood fractions other than antisera, haemoglobin, blood globulins and serum globulins [\\bl][\\ul]",
+            "min": "3002000000",
+            "max": "3002999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading, including other materials of heading No 3002. The materials of this description may also be used, provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH INCLUDING RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3002",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 \u2013 haemoglobin, blood globulins and serum globulins [\\bl][\\ul]",
+            "min": "3002000000",
+            "max": "3002999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading, including other materials of heading No 3002. The materials of this description may also be used, provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH INCLUDING RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3002",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 \u2013 haemoglobin, blood globulins and serum globulins [\\bl][\\ul]",
+            "min": "3002000000",
+            "max": "3002999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading, including other materials of heading No 3002. The materials of this description may also be used, provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH INCLUDING RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3002",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 \u2013 other [\\bl][\\ul]",
+            "min": "3002000000",
+            "max": "3002999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading, including other materials of heading No 3002. The materials of this description may also be used, provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH INCLUDING RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3002",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 \u2013 other [\\bl][\\ul]",
+            "min": "3002000000",
+            "max": "3002999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from materials of any heading, including other materials of heading No 3002. The materials of this description may also be used, provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "AH INCLUDING RESTRICTION MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3003",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 Obtained from amikacin of heading No 2941 [\\bl][\\ul]",
+            "min": "3003000000",
+            "max": "3003999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product. However, materials of heading No 3003 or [heading 3004](/headings/3004)  may be used provided their value, taken together, does not exceed **20%** of the ex works price of the product",
+                    "class": [
+                        "CTH TOLERANCE (MAY BE USED RESTRICTION MAXNOM)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3003",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 Other [\\bl][\\ul]",
+            "min": "3003000000",
+            "max": "3003999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials used are classified within a heading other than that of the product. However, materials of heading No 3003 or [heading 3004](/headings/3004)  may be used provided their value, taken together, does not exceed **20%** of the ex-works price of the product; \n\n- the value of all the materials used does not exceed **50%** of the ex-works price of the product",
+                    "class": [
+                        "(CTH TOLERANCE (MAY BE USED RESTRICTION MAXNOM)) AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3004",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 Obtained from amikacin of heading No 2941 [\\bl][\\ul]",
+            "min": "3004000000",
+            "max": "3004999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product. However, materials of heading No 3003 or [heading 3004](/headings/3004)  may be used provided their value, taken together, does not exceed **20%** of the ex works price of the product",
+                    "class": [
+                        "CTH TOLERANCE (MAY BE USED RESTRICTION MAXNOM)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "3004",
+            "chapter": 30,
+            "subdivision": "[ul][bl] \u2013 Other [\\bl][\\ul]",
+            "min": "3004000000",
+            "max": "3004999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials used are classified within a heading other than that of the product. However, materials of heading No 3003 or [heading 3004](/headings/3004)  may be used provided their value, taken together, does not exceed **20%** of the ex-works price of the product; \n\n- the value of all the materials used does not exceed **50%** of the ex-works price of the product",
+                    "class": [
+                        "(CTH TOLERANCE (MAY BE USED RESTRICTION MAXNOM)) AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 31",
+            "chapter": 31,
+            "subdivision": "Fertilisers",
+            "min": "3100000000",
+            "max": "3199999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product. However, materials classified within the same heading may be used provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "CTH TOLERANCE (MAY BE USED RESTRICTION MAXNOM)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 3105",
+            "chapter": 31,
+            "subdivision": "Mineral or chemical fertilizers containing two or three of the fertilizing elements nitrogen, phosphorous and potassium; other fertilizers; goods of this Chapter, in tablets or similar forms or in packages of a gross weight not exceeding 10 kg, [br][ul][bl] \u2013 sodium nitrate [\\bl][bl] \u2013 calcium cyanamide [\\bl][bl] \u2013 potassium sulphate [\\bl][bl] \u2013 magnesium potassium sulphate [\\bl][\\ul]",
+            "min": "3105000000",
+            "max": "3105999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which:\n\n- all the materials used are classified within a heading other than that of the product. However, materials classified within the same heading may be used provided their value does not exceed **20%** of the ex-works price of the product; \n\n- the value of all the materials used does not exceed **50%** of the ex-works price of the product",
+                    "class": [
+                        "(CTH TOLERANCE (MAY BE USED RESTRICTION MAXNOM)) AND MAXNOM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 32",
+            "chapter": 32,
+            "subdivision": "Tanning or dyeing extracts; tannins and their derivatives; dyes, pigments and other colouring matter; paints and varnishes; putty and other mastics; inks",
+            "min": "3200000000",
+            "max": "3299999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product. However, materials classified within the same heading may be used provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "CTH TOLERANCE (MAY BE USED RESTRICTION MAXNOM)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 32",
+            "chapter": 32,
+            "subdivision": "Tanning or dyeing extracts; tannins and their derivatives; dyes, pigments and other colouring matter; paints and varnishes; putty and other mastics; inks",
+            "min": "3200000000",
+            "max": "3299999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product. However, materials classified within the same heading may be used provided their value does not exceed **20%** of the ex-works price of the product",
+                    "class": [
+                        "CTH TOLERANCE (MAY BE USED RESTRICTION MAXNOM)"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 3201",
+            "chapter": 32,
+            "subdivision": "Tannins and their salts, ethers, esters and other derivatives",
+            "min": "3201000000",
+            "max": "3201999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from tanning extracts of vegetable origin",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "Chapter 42",
+            "chapter": 42,
+            "subdivision": "Articles of leather; saddlery and harness; travel goods, handbags and similar containers; articles of animal gut (other than silk worm gut)",
+            "min": "4200000000",
+            "max": "4299999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 43",
+            "chapter": 43,
+            "subdivision": "Furskins and artificial fur; manufactures thereof",
+            "min": "4300000000",
+            "max": "4399999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 4302",
+            "chapter": 43,
+            "subdivision": "[ul][bl] \u2013 Plates, crosses and similar forms [\\bl][\\ul]",
+            "min": "4302000000",
+            "max": "4302999999",
+            "rules": [
+                {
+                    "rule": "Bleaching or dyeing, in addition to cutting and assembly of non-assembled tanned or dressed furskins",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 4302",
+            "chapter": 43,
+            "subdivision": "[ul][bl] \u2013 Other [\\bl][\\ul]",
+            "min": "4302000000",
+            "max": "4302999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from non-assembled, tanned or dressed furskins",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "4303",
+            "chapter": 43,
+            "subdivision": "Articles of apparel, clothing accessories and other articles of furskin",
+            "min": "4303000000",
+            "max": "4303999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from non-assembled tanned or dressed furskins of heading No 4302",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 44",
+            "chapter": 44,
+            "subdivision": "Wood and articles of wood; wood charcoal",
+            "min": "4400000000",
+            "max": "4499999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 4403",
+            "chapter": 44,
+            "subdivision": "Wood roughly squared",
+            "min": "4403000000",
+            "max": "4403999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from wood in the rough, whether or not stripped of its bark or merely roughed down",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 4407",
+            "chapter": 44,
+            "subdivision": "Wood sawn or chipped lengthwise, sliced or peeled, of a thickness exceeding 6 mm, planed, sanded or finger-jointed",
+            "min": "4407000000",
+            "max": "4407999999",
+            "rules": [
+                {
+                    "rule": "Planing, sanding or finger-jointing",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 4408",
+            "chapter": 44,
+            "subdivision": "Veneer sheets and sheets for plywood, of a thickness not exceeding 6 mm, spliced, and other wood sawn lengthwise, sliced or peeled of a thickness not exceeding 6 mm, planed, sanded or finger-jointed",
+            "min": "4408000000",
+            "max": "4408999999",
+            "rules": [
+                {
+                    "rule": "Splicing, planing, sanding or finger-jointing",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 4409",
+            "chapter": 44,
+            "subdivision": "[ul][bl] \u2013 Sanded or finger-jointed [\\bl][\\ul]",
+            "min": "4409000000",
+            "max": "4409999999",
+            "rules": [
+                {
+                    "rule": "Sanding or finger-jointing",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 4409",
+            "chapter": 44,
+            "subdivision": "[ul][bl] \u2013 Beadings and mouldings [\\bl][\\ul]",
+            "min": "4409000000",
+            "max": "4409999999",
+            "rules": [
+                {
+                    "rule": "Beading or moulding",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 4410 - 4413",
+            "chapter": 44,
+            "subdivision": "Beadings and mouldings, including moulded skirting and other moulded boards",
+            "min": "4410000000",
+            "max": "4413999999",
+            "rules": [
+                {
+                    "rule": "Beading or moulding",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 4415",
+            "chapter": 44,
+            "subdivision": "Packing cases, boxes, crates, drums and similar packings, of wood",
+            "min": "4415000000",
+            "max": "4415999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from boards not cut to size",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 4416",
+            "chapter": 44,
+            "subdivision": "Casks, barrels, vats, tubs and other coopers' products and parts thereof, of wood",
+            "min": "4416000000",
+            "max": "4416999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from riven staves, not further worked than sawn on the two principal surfaces",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 4418",
+            "chapter": 44,
+            "subdivision": "[ul][bl] \u2013 Builders' joinery and carpentry of wood [\\bl][\\ul]",
+            "min": "4418000000",
+            "max": "4418999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product. However, cellular wood panels, shingles and shakes may be used",
+                    "class": [
+                        "CTH TOLERANCE MAY BE USED"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex 4418",
+            "chapter": 44,
+            "subdivision": "[ul][bl] \u2013 Beadings and mouldings [\\bl][\\ul]",
+            "min": "4418000000",
+            "max": "4418999999",
+            "rules": [
+                {
+                    "rule": "Beading or moulding",
+                    "class": [
+                        "PROCESSING"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "4421",
+            "chapter": 44,
+            "subdivision": "Match splints; woodexen pegs or pins for footwear",
+            "min": "4421000000",
+            "max": "4421999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from wood of any heading except drawn wood of heading No 4409",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 45",
+            "chapter": 45,
+            "subdivision": "Cork and articles of cork",
+            "min": "4500000000",
+            "max": "4599999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "4503",
+            "chapter": 45,
+            "subdivision": "Articles of natural cork",
+            "min": "4503000000",
+            "max": "4503999999",
+            "rules": [
+                {
+                    "rule": "Manufacture from cork of heading No 4501",
+                    "class": [
+                        "PRODUCTION FROM"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "Chapter 46",
+            "chapter": 46,
+            "subdivision": "Manufactures of straw, of esparto or of other plaiting materials; basketware and wickerwork",
+            "min": "4600000000",
+            "max": "4699999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "Chapter 47",
+            "chapter": 47,
+            "subdivision": "Pulp of wood or of other fibrous cellulosic material; recovered (waste and scrap) paper or paperboard",
+            "min": "4700000000",
+            "max": "4799999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        },
+        {
+            "heading": "ex Chapter 48",
+            "chapter": 48,
+            "subdivision": "Paper and paperboard; articles of paper pulp, of paper or of paperboard",
+            "min": "4800000000",
+            "max": "4899999999",
+            "rules": [
+                {
+                    "rule": "Manufacture in which all the materials used are classified within a heading other than that of the product",
+                    "class": [
+                        "CTH"
+                    ],
+                    "operator": null
+                }
+            ],
+            "valid": true
+        }
+    ]
+}

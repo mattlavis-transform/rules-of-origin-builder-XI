@@ -87,6 +87,8 @@ class ClassicRooRow(object):
         self.rule_text = self.rule_text.strip()
 
     def format_subdivision(self):
+        self.subdivision_text = self.subdivision_text.replace("\t", " ")
+        self.subdivision_text = re.sub(r'\s+', ' ', self.subdivision_text)
         self.subdivision_text = self.subdivision_text.replace("except\nfor:", "except for")
         self.subdivision_text = self.subdivision_text.replace("except for:", "")
         self.subdivision_text = self.subdivision_text.replace("except for", "")

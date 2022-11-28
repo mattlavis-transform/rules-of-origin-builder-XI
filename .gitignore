@@ -109,5 +109,12 @@ temp/
 .vscode/
 .DS_Store
 NOTES.md
-resources/
+resources/eu
+resources/html
+resources/html_final
+resources/json
+resources/json_html
+resources/roo_classes
+resources/guidance
+resources/report
 log/

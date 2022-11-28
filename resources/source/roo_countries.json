@@ -1,0 +1,381 @@
+[
+    {
+        "code": "KE",
+        "prefix": "kenya",
+        "omit": 1,
+        "source": "classic",
+        "copy_options": [
+            "xi",
+            "uk"
+        ]
+    },
+    {
+        "code": "TR",
+        "prefix": "turkey",
+        "omit": 1,
+        "source": "classic",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "AF",
+        "prefix": "gsp",
+        "omit": 1,
+        "source": "classic",
+        "copy_options": [
+            "xi",
+            "uk"
+        ]
+    },
+    {
+        "code": "PM",
+        "prefix": "oct",
+        "omit": 1,
+        "source": "classic",
+        "copy_options": [
+            "xi",
+            "uk"
+        ]
+    },
+    {
+        "code": "GB",
+        "prefix": "eu",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "AL",
+        "prefix": "albania",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "CA",
+        "prefix": "canada",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "KR",
+        "prefix": "south-korea",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "CO",
+        "prefix": "andean",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "BB",
+        "prefix": "cariforum",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "CL",
+        "prefix": "chile",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "CI",
+        "prefix": "cotedivoire",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "EG",
+        "prefix": "egypt",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "FO",
+        "prefix": "faroe-islands",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "GE",
+        "prefix": "georgia",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "GH",
+        "prefix": "ghana",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "IS",
+        "prefix": "iceland-norway",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "IL",
+        "prefix": "israel",
+        "omit": 1,
+        "source": "product",
+        "has_rules_decomposed": false,
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "XK",
+        "prefix": "kosovo",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "JO",
+        "prefix": "jordan",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "LB",
+        "prefix": "lebanon",
+        "omit": 1,
+        "source": "product",
+        "has_rules_decomposed": false,
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "MX",
+        "prefix": "mexico",
+        "omit": 1,
+        "source": "product",
+        "has_rules_decomposed": false,
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "CH",
+        "prefix": "switzerland-liechtenstein",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "MD",
+        "prefix": "moldova",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "MA",
+        "prefix": "morocco",
+        "omit": 1,
+        "source": "product",
+        "has_rules_decomposed": false,
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "MK",
+        "prefix": "north-macedonia",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "FJ",
+        "prefix": "pacific",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "PS",
+        "prefix": "palestinian-authority",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "SG",
+        "prefix": "singapore",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "RS",
+        "prefix": "serbia",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "ZA",
+        "prefix": "sacum",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "TN",
+        "prefix": "tunisia",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "UA",
+        "prefix": "ukraine",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "VN",
+        "prefix": "vietnam",
+        "omit": 0,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "JP",
+        "prefix": "japan",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "DZ",
+        "prefix": "algeria",
+        "omit": 1,
+        "source": "product",
+        "has_rules_decomposed": false,
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "BA",
+        "prefix": "bosnia",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "ME",
+        "prefix": "montenegro",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "MU",
+        "prefix": "esa",
+        "omit": 1,
+        "source": "product",
+        "has_rules_decomposed": false,
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "CM",
+        "prefix": "cameroon",
+        "omit": 1,
+        "source": "product",
+        "has_rules_decomposed": false,
+        "copy_options": [
+            "xi"
+        ]
+    },
+    {
+        "code": "NI",
+        "prefix": "central-america",
+        "omit": 1,
+        "source": "product",
+        "copy_options": [
+            "xi"
+        ]
+    }
+]

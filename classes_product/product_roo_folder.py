@@ -20,7 +20,19 @@ class ProductRooFolder(object):
         load_dotenv('.env')
         self.export_path_uk = os.getenv('EXPORT_PATH_UK')
         self.export_path_xi = os.getenv('EXPORT_PATH_XI')
+        self.get_overrides()
         self.get_chapters_to_process()
+
+    def get_overrides(self):
+        g.overrides = []
+        folder = os.path.join(os.getcwd(), "resources", "overrides")
+        file = os.path.join(folder, "overrides.json")
+        f = open(file)
+        data = json.load(f)
+        for item in data:
+            g.overrides.append(item)
+
+        a = 1
 
     def get_chapters_to_process(self):
         load_dotenv('.env')
@@ -78,7 +90,9 @@ class ProductRooFolder(object):
         f.close()
 
         if self.data_json != self.previous_json:
-            if "Chapter 4" in subheading:
+            if "030611" in subheading:
+                a = 1
+            if "160100" in subheading:
                 a = 1
             product_roo = ProductRoo(self.data_json, subheading, self.country_code, self.scheme_code, self.has_rules_decomposed)
             self.rule_sets += product_roo.export

@@ -68,7 +68,11 @@
 
 ### To process the JSONs:
 
-  `python3 process_roo.py`
+  `python3 process_roo_product.py` -- These are the more modern structured RoO documents
+
+  *or*
+
+  `python3 process_roo_classic.py` -- These are the more old-structured RoO documents (like kenya, turkey)
 
 - This takes the downloaded RoO JSON source files and converts them into the necessary data objects + stores in local Postgres database
 
