@@ -252,7 +252,7 @@
     {
         "code": "PS",
         "prefix": "palestinian-authority",
-        "omit": 1,
+        "omit": 0,
         "source": "product",
         "copy_options": [
             "xi"
@@ -306,7 +306,7 @@
     {
         "code": "VN",
         "prefix": "vietnam",
-        "omit": 0,
+        "omit": 1,
         "source": "product",
         "copy_options": [
             "xi"
