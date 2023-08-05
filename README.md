@@ -4,9 +4,9 @@
 
 ### Create and activate a virtual environment, e.g.
 
-- `python3 -m venv venv/`
+- `python -m venv venv/`
 - `source venv/bin/activate`
-- Install necessary Python modules via `pip3 install -r requirements.txt`
+- Install necessary Python modules via `pip install -r requirements.txt`
 
 ### Environment variable settings
 
@@ -60,7 +60,7 @@
 
 ### To scrape source:
 
-  `python3 scrape_roo.py`
+  `python scrape_roo.py`
 
 - This will download the RoO from the source
 - Saves as complete JSON documents locally
@@ -68,17 +68,17 @@
 
 ### To process the JSONs:
 
-  `python3 process_roo_product.py` -- These are the more modern structured RoO documents
+  `python process_roo_product.py` -- These are the more modern structured RoO documents
 
   *or*
 
-  `python3 process_roo_classic.py` -- These are the more old-structured RoO documents (like kenya, turkey)
+  `python process_roo_classic.py` -- These are the more old-structured RoO documents (like kenya, turkey)
 
 - This takes the downloaded RoO JSON source files and converts them into the necessary data objects + stores in local Postgres database
 
 ### To export to new JSON:
 
-  `python3 export_to_json.py`
+  `python export_to_json.py`
 
 - This runs through the Postgres database and creates a JSON file that can be used in the OTT prototype
 
